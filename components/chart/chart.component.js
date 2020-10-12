@@ -30,18 +30,55 @@ export class FtuiChart extends FtuiElement {
         responsive: true,
         title: {
           display: true,
-          text: 'Custom Chart Title'
+          text: 'Custom Chart Title',
+          font: {
+            size: getComputedStyle(this).getPropertyValue('--chart-title-font-size').trim() || 16,
+            style: '500',
+            color: getComputedStyle(this).getPropertyValue('--light-color').trim()
+          }
+        },
+        legend: {
+          labels: {
+            usePointStyle: true,
+            boxWidth: 6,
+            padding: 8,
+            font: {
+              size: getComputedStyle(this).getPropertyValue('--chart-legend-font-size').trim() || 13
+            }
+          }
         },
         scales: {
           x: {
             type: 'time',
             time: {
-              parser: 'yyyy-MM-dd_HH:mm:ss'
+              parser: 'yyyy-MM-dd_HH:mm:ss',
+              displayFormats: { millisecond: 'HH:mm:ss.SSS', second: 'HH:mm:ss', minute: 'HH:mm', hour: 'HH:mm', day: 'D. MMM' } 
+            },
+            gridLines: {
+              color: getComputedStyle(this).getPropertyValue('--dark-color').trim()
+            },
+            ticks: {
+              maxRotation: 0,
+              autoSkip: true,
+              autoSkipPadding: 30,
+              font: {
+                size: getComputedStyle(this).getPropertyValue('--chart-tick-font-size').trim() || 11
+              }
             }
           },
           y: {
             scaleLabel: {
               labelString: 'value'
+            },
+            gridLines: {
+              color: getComputedStyle(this).getPropertyValue('--dark-color').trim()
+            },
+            ticks: {
+              autoSkip: true,
+              autoSkipPadding: 30,
+              font: {
+                size: getComputedStyle(this).getPropertyValue('--chart-tick-font-size').trim() || 11
+              }
             }
           }
         }
@@ -50,6 +87,8 @@ export class FtuiChart extends FtuiElement {
 
     this.dataElements.forEach(dataElement => dataElement.addEventListener('ftuiDataChanged', () => this.updateDatasets()));
 
+    Chart.defaults.font.color = getComputedStyle(this).getPropertyValue('--medium-color').trim(); /* Default font color */
+    Chart.defaults.font.family = getComputedStyle(this).getPropertyValue('--font-family').trim();
     this.chart = new Chart(this.chartElement, this.configuration);
 
     // TODO: Why does the size not fit sometimes?
@@ -96,6 +135,9 @@ export class FtuiChart extends FtuiElement {
       Object.keys(FtuiChartData.properties).forEach(property => {
         dataset[property] = dataElement[property];
       });
+      dataset.borderColor = getComputedStyle(this).getPropertyValue('--' + dataset.borderColor).trim() || dataset.borderColor;
+      dataset.backgroundColor = (dataset.backgroundColor.length === 0) ? Chart.helpers.color(dataset.borderColor).alpha(0.2).rgbString() : dataset.backgroundColor;
+      dataset.pointBackgroundColor = dataset.borderColor;
       dataset.data = dataElement.data;
       this.configuration.data.datasets.push(dataset);
     });

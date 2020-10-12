@@ -24,8 +24,10 @@ export class FtuiChartData extends FtuiElement {
     return {
       label: '',
       fill: false,
-      backgroundColor: 'rgba(75,192,192,0.2)',
+      backgroundColor: '',
       borderColor: 'rgba(75,192,192,1)',
+      borderWidth: 1.2,
+      pointRadius: 2,
       title: '-',
       log: '-',
       file: '-',
