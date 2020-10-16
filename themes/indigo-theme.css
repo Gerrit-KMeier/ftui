@@ -1,5 +1,5 @@
 @import "./color-attributes.css";
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500');
 
 
 :root {
@@ -17,7 +17,7 @@
   --gray75: #c7c9d7;
   --gray-trans: rgba(40, 40, 40, 0.5);
   --lightgray: #777777;
-  --orange: #aa6900;
+  --orange: #ECA209;
   --red: #d63056;
   --lightred: rgb(219, 72, 70);
   --tomato: rgb(238, 92, 66);
@@ -72,6 +72,10 @@
   --grid-header-color: var(--gray75);
   --grid-header-background-color: var(--gray33);
 
+  --tab-color: var(--gray40);
+  --tab-contrast-color: var(--gray33);
+  --tab-active-color: var(--gray55);
+
   --border-color: var(--gray10);
 
 
@@ -87,15 +91,6 @@
   --tile-padding: 20px;
   
 }
-
-
-/* Overwrite variables for specific UI parts */
-
-ftui-tab {
-  --primary-color: var(--gray55);
-  --dark-color: var(--gray33);
-}
-
 
 /* Theme specific CSS rules */
 
@@ -143,4 +138,3 @@ ftui-grid-tile:first-child {
 ftui-grid-tile:last-child {
   padding-bottom: var(--tile-padding);
 }
-
