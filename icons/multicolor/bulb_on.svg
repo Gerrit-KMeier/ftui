@@ -1,19 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" viewBox="0 0 40 40">
-  <g class="bulb_on">
-    <g class="translate_10_0_0_50_10_0_90_0_0">
-      <g class="rotate_0_0_50_45_100_0">
-        <g class="bulb">
-          <g class="color_yellow">
-            <path fill="#F6C825" fill-rule="evenodd" d="M6 13C6 5.82 11.82 0 19 0s13 5.82 13 13a12.94 12.94 0 01-2.021 6.965L30 20s-.139.177-.37.487c-.11.155-.223.308-.34.458C27.822 22.959 24.614 27.678 25 30H13s.408-2.854-3.563-8.194A13.053 13.053 0 018.2 20.237 40.374 40.374 0 008 20l.02-.038A12.94 12.94 0 016 13z" class="glass" clip-rule="evenodd"/>
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none"
+  xmlns="http://www.w3.org/2000/svg">
+  <g id="bulb_on">
+    <g id="translate_0_0_0_25_-2_0_50_0_0_75_2_0_100_0_0">
+      <g id="rotate_0_0_25_-5_50_0_75_5_100_0">
+        <g id="bulb">
+          <g id="color_yellow">
+            <path id="glass" fill-rule="evenodd" clip-rule="evenodd" d="M11.0037 18.0001C11.0037 10.8204 16.824 5.00007 24.0037 5.00007C31.1834 5.00007 37.0037 10.8204 37.0037 18.0001C37.0037 20.5625 36.2623 22.9517 34.9824 24.965L35.0037 25.0001C35.0037 25.0001 34.8646 25.177 34.6328 25.4867C34.5232 25.642 34.4102 25.7949 34.2941 25.9451C32.8248 27.9588 29.6166 32.6778 30.0037 35.0001H18.0037C18.0037 35.0001 18.4114 32.1462 14.4408 26.8065C13.9895 26.3167 13.5754 25.7921 13.2028 25.2373C13.1373 25.1587 13.0709 25.0796 13.0037 25.0001L13.0231 24.9622C11.7443 22.9495 11.0037 20.5613 11.0037 18.0001Z" fill="#F1C40F"/>
           </g>
-          <g class="color_gray55">
-            <rect width="16" height="3" x="11" y="32" fill="#999DB0" class="Rectangle" rx="1.5"/>
-            <rect width="8" height="3" fill="#999DB0" class="Rectangle_2" rx="1.5" transform="matrix(-1 0 0 1 23 37)"/>
+          <g id="color_gray55">
+            <rect id="Rectangle" x="16.0037" y="37.0001" width="16" height="3" rx="1.5" fill="#999DB0"/>
+            <rect id="Rectangle_2" width="8" height="3" rx="1.5" transform="matrix(-1 0 0 1 28.0037 42.0001)" fill="#999DB0"/>
           </g>
-          <g class="color_orange">
-            <path stroke="#ECA209" stroke-linecap="square" stroke-width="2" d="M19 29V19" class="Line"/>
-            <path stroke="#ECA209" stroke-linecap="round" stroke-width="2" d="M19 19l6-6" class="Line_2"/>
-            <path stroke="#ECA209" stroke-linecap="round" stroke-width="2" d="M19 19l-6-6" class="Line_3"/>
+          <g id="color_orange">
+            <path id="Line" d="M24.0037 34.0001V24.0001" stroke="#ECA209" stroke-width="2" stroke-linecap="square"/>
+            <path id="Line_2" d="M24.0037 24.0001L30.0037 18.0001" stroke="#ECA209" stroke-width="2" stroke-linecap="round"/>
+            <path id="Line_3" d="M24.0037 24.0001L18.0037 18.0001" stroke="#ECA209" stroke-width="2" stroke-linecap="round"/>
           </g>
         </g>
       </g>

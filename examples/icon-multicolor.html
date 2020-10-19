@@ -29,7 +29,7 @@
     <ftui-grid-tile row="1" col="1" height="9" width="3">
       <div class="cell">
         
-        <ftui-icon-multicolor name="bulb_on"></ftui-icon-multicolor>
+        <ftui-icon-multicolor [name]="Dimmer09:onoff | map('on: bulb_on, off: bulb_off')"></ftui-icon-multicolor>
 
       </div>
     </ftui-grid-tile>
