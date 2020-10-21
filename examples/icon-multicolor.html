@@ -29,11 +29,12 @@
     <ftui-grid-tile row="1" col="1" height="9" width="3">
       <div class="cell">
         
-        <ftui-icon-multicolor [name]="Dimmer09:onoff | map('on: bulb_on, off: bulb_off')"></ftui-icon-multicolor>
-
+        <ftui-icon-multicolor name="bulb_on" iterations="-1"></ftui-icon-multicolor>
+        <ftui-icon-multicolor name="shade_on" iterations="-1"></ftui-icon-multicolor>
+        <ftui-icon-multicolor name="blind" iterations="-1" duration="1.0" direction="alternate"></ftui-icon-multicolor>
+      
       </div>
     </ftui-grid-tile>
   </ftui-grid>
 </body>
-
 </html>

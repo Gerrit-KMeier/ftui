@@ -1,0 +1,35 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none"
+  xmlns="http://www.w3.org/2000/svg">
+  <g id="shade_on">
+    <g id="shade">
+      <g id="translate_0_0_0_30_-2_0_55_0_0_80_2_0_100_0_0">
+        <g id="color_yellow">
+          <circle id="Oval 13" cx="25.5" cy="38.5" r="5.5" fill="#F1C40F"/>
+        </g>
+      </g>
+      <g id="translate_0_0_0_25_-2_0_50_0_0_75_2_0_100_0_0">
+        <g id="rotate_0_0_25_3_50_0_75_-3_100_0">
+          <g id="color_gray75">
+            <path id="Line 4" d="M25.5 7V18" stroke="#C7C9D7" stroke-width="3" stroke-linecap="round"/>
+          </g>
+        </g>
+      </g>
+      <g id="translate_0_0_0_25_-2_0_50_0_0_75_2_0_100_0_0_2">
+        <g id="rotate_0_0_25_3_50_0_75_-3_100_0_2">
+          <g id="color_gray40">
+            <rect id="Rectangle 17" x="23" y="13" width="5" height="9" rx="2.5" fill="#6F7383"/>
+          </g>
+          <g id="color_gray75_2">
+            <path id="Rectangle 14" fill-rule="evenodd" clip-rule="evenodd" d="M42.8665 39C43.0099 38.0228 43.0844 37.0208 43.0844 36C43.0844 25.5066 35.2116 17 25.5 17C15.7884 17 7.91559 25.5066 7.91559 36C7.91559 37.0208 7.99009 38.0228 8.13355 39H42.8665Z" fill="#C7C9D7"/>
+          </g>
+          <g id="color_white" opacity="0.5">
+            <path id="Rectangle 14_2" fill-rule="evenodd" clip-rule="evenodd" d="M42.8665 39C43.0099 38.0228 43.0844 37.0208 43.0844 36C43.0844 25.5066 35.2116 17 25.5 17C15.7884 17 7.91559 25.5066 7.91559 36C7.91559 37.0208 7.99009 38.0228 8.13355 39H42.8665Z" fill="white"/>
+          </g>
+          <g id="color_gray40_2">
+            <rect id="Rectangle 20" x="8.75" y="37.75" width="33.5" height="1.5" rx="0.75" fill="#6F7383" stroke="#6F7383" stroke-width="1.5"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

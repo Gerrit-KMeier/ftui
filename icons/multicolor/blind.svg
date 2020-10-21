@@ -1,0 +1,84 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="blind">
+<g id="blind_2">
+<g id="color_white">
+<rect id="Rectangle 2 Copy" x="12" y="5" width="12" height="38" fill="white"/>
+<rect id="Rectangle 1 Copy" x="26" y="5" width="12" height="38" fill="white"/>
+</g>
+<g id="color_blue">
+<rect id="Rectangle 2" opacity="0.75" x="12" y="5" width="12" height="38" fill="#228ACE"/>
+<rect id="Rectangle 1" opacity="0.75" x="26" y="5" width="12" height="38" fill="#228ACE"/>
+</g>
+<g id="color_gray75">
+<path id="Path 4" d="M11 5V41.1111C11 41.1111 11 44 13 44C15 44 35 44 37 44C39 44 39 41.1111 39 41.1111V5" stroke="#C7C9D7" stroke-width="2"/>
+<path id="Line 2" d="M25 6V43" stroke="#C7C9D7" stroke-width="2" stroke-linecap="square"/>
+</g>
+<g id="translate_0_0_0_85_0_0_86_0_30_100_0_30">
+<g id="lamella">
+<g id="color_gray25">
+<rect id="Rectangle 2_2" x="10" y="15" width="30" height="2" fill="#2B2D3C"/>
+</g>
+<g id="color_gray40">
+<path id="Rectangle 1_2" fill-rule="evenodd" clip-rule="evenodd" d="M7 11H41L43 15H9L7 11Z" fill="#6F7383"/>
+</g>
+</g>
+</g>
+<g id="translate_0_0_0_67_0_0_68_0_24_100_0_24">
+<g id="lamella_2">
+<g id="color_gray25_2">
+<rect id="Rectangle 2_3" x="10" y="15" width="30" height="2" fill="#2B2D3C"/>
+</g>
+<g id="color_gray40_2">
+<path id="Rectangle 1_3" fill-rule="evenodd" clip-rule="evenodd" d="M7 11H41L43 15H9L7 11Z" fill="#6F7383"/>
+</g>
+</g>
+</g>
+<g id="translate_0_0_0_50_0_0_51_0_18_100_0_18">
+<g id="lamella_3">
+<g id="color_gray25_3">
+<rect id="Rectangle 2_4" x="10" y="15" width="30" height="2" fill="#2B2D3C"/>
+</g>
+<g id="color_gray40_3">
+<path id="Rectangle 1_4" fill-rule="evenodd" clip-rule="evenodd" d="M7 11H41L43 15H9L7 11Z" fill="#6F7383"/>
+</g>
+</g>
+</g>
+<g id="translate_0_0_0_33_0_0_34_0_12_100_0_12">
+<g id="lamella_4">
+<g id="color_gray25_4">
+<rect id="Rectangle 2_5" x="10" y="15" width="30" height="2" fill="#2B2D3C"/>
+</g>
+<g id="color_gray40_4">
+<path id="Rectangle 1_5" fill-rule="evenodd" clip-rule="evenodd" d="M7 11H41L43 15H9L7 11Z" fill="#6F7383"/>
+</g>
+</g>
+</g>
+<g id="translate_0_0_0_16_0_0_17_0_6_100_0_6">
+<g id="lamella_5">
+<g id="color_gray25_5">
+<rect id="Rectangle 2_6" x="10" y="15" width="30" height="2" fill="#2B2D3C"/>
+</g>
+<g id="color_gray40_5">
+<path id="Rectangle 1_6" fill-rule="evenodd" clip-rule="evenodd" d="M7 11H41L43 15H9L7 11Z" fill="#6F7383"/>
+</g>
+</g>
+</g>
+<g id="lamella_6">
+<g id="color_gray25_6">
+<rect id="Rectangle 2_7" x="10" y="15" width="30" height="2" fill="#2B2D3C"/>
+</g>
+<g id="color_gray40_6">
+<path id="Rectangle 1_7" fill-rule="evenodd" clip-rule="evenodd" d="M7 11H41L43 15H9L7 11Z" fill="#6F7383"/>
+</g>
+</g>
+<g id="lamella_7">
+<g id="color_gray25_7">
+<rect id="Rectangle 2_8" x="10" y="9" width="30" height="2" fill="#2B2D3C"/>
+</g>
+<g id="color_gray40_7">
+<path id="Rectangle 1_8" fill-rule="evenodd" clip-rule="evenodd" d="M7 5H41L43 9H9L7 5Z" fill="#6F7383"/>
+</g>
+</g>
+</g>
+</g>
+</svg>

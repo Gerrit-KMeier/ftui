@@ -2,14 +2,14 @@
   xmlns="http://www.w3.org/2000/svg">
   <g id="bulb_off">
     <g id="bulb">
-      <g id="color-gray55">
+      <g id="color_gray55">
         <path id="glass" fill-rule="evenodd" clip-rule="evenodd" d="M11 18C11 10.8203 16.8203 5 24 5C31.1797 5 37 10.8203 37 18C37 20.5624 36.2586 22.9517 34.9787 24.965L35 25C35 25 34.861 25.177 34.6291 25.4866C34.5195 25.642 34.4066 25.7948 34.2905 25.945C32.8211 27.9587 29.613 32.6778 30 35H18C18 35 18.4077 32.1461 14.4371 26.8064C13.9858 26.3166 13.5717 25.7921 13.1992 25.2372C13.1337 25.1586 13.0673 25.0795 13 25L13.0195 24.9621C11.7407 22.9494 11 20.5612 11 18Z" fill="#999DB0"/>
       </g>
-      <g id="color-gray33">
+      <g id="color_gray33">
         <rect id="Rectangle 2" x="16" y="37" width="16" height="3" rx="1.5" fill="#5F6373"/>
         <rect id="Rectangle 2_2" width="8" height="3" rx="1.5" transform="matrix(-1 0 0 1 28 42)" fill="#5F6373"/>
       </g>
-      <g id="color-gray40" opacity="0.749721">
+      <g id="color_gray40" opacity="0.749721">
         <path id="Line" d="M24 34V24" stroke="#6F7383" stroke-width="2" stroke-linecap="square"/>
         <path id="Line_2" d="M24 24L30 18" stroke="#6F7383" stroke-width="2" stroke-linecap="round"/>
         <path id="Line_3" d="M24 24L18 18" stroke="#6F7383" stroke-width="2" stroke-linecap="round"/>

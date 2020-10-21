@@ -1,9 +1,8 @@
 :host {
-  --color-base: currentColor;
+
 }
 
 :host svg {
   width: var(--width, unset);
   height: var(--height, unset);
-  fill: currentColor;
 }

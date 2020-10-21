@@ -5,23 +5,25 @@
  */
 
 import { FtuiIcon } from "../icon/icon.component.js";
+import * as ftui from '../../modules/ftui/ftui.helper.js';
 
 export class FtuiIconMulticolor extends FtuiIcon {
   constructor(properties) {
     super(Object.assign(FtuiIconMulticolor.properties, properties));
-
+    
+    this.keyframes = [];
     this.animations = [];
 
     const observerOptions = {
-      childList: true,
-      attributes: false,
-      subtree: false,
-    };
-
-    const observer = new MutationObserver(() => {
-      this.onIconChanged();
-    });
-    observer.observe(this.elementIcon, observerOptions);
+        childList: true,
+        attributes: false,
+        subtree: false,
+      };
+  
+      const observer = new MutationObserver(() => {
+        this.onIconChanged();
+      });
+      observer.observe(this.elementIcon, observerOptions);
   }
 
   template() {
@@ -32,11 +34,66 @@ export class FtuiIconMulticolor extends FtuiIcon {
       `;
   }
 
+  set animationPosition(position) {
+    const paused = (this.animations?.[0]?.playState === 'paused');
+    this.animations.forEach(animation => {
+      if (!paused) {
+        animation.play();
+        animation.pause();
+      } 
+      animation.currentTime = position * this.duration * 1000;
+    });
+  }
+
+  get animationOptions() {
+    return {
+      duration: this.duration * 1000, 
+      iterations: (this.iterations == -1) ? Infinity : this.iterations,
+      direction: this.direction
+    };
+  }
+
+  static get properties() {
+    return {
+      path: 'icons/multicolor',
+      duration: 1.0,            // in seconds
+      iterations: 1,            // -1 for infinite
+      direction: 'normal',       // normal, reverse, alternate, alternate-reverse
+      currentTime: 0,
+      autoPlay: true
+    };
+  }
+
+  static get observedAttributes() {
+    return [...this.convertToAttributes(FtuiIconMulticolor.properties), ...super.observedAttributes];
+  }
+
+  onAttributeChanged(name, oldValue, newValue) {
+    super.onAttributeChanged(name, oldValue, newValue);
+    const running = (this.animations?.[0]?.playState === 'running');
+    switch (name) {
+      case 'duration':
+      case 'iterations':
+      case 'direction':
+        this.prepareAnimations();
+        if (running) {
+          this.animate();
+        } 
+        break;
+      case 'currentTime':
+        this.prepareAnimations;
+
+    }
+  }
+
   onIconChanged() {
     this.applyThemeColors();
-    this.loadAnimations();
+    this.loadKeyframes();
+    this.prepareAnimations();
 
-    this.animate();
+    if (this.autoPlay) {
+      this.animate();
+    } 
   }
 
   applyThemeColors() {
@@ -58,17 +115,16 @@ export class FtuiIconMulticolor extends FtuiIcon {
     });
   }
 
-  /* Creates animations based on svg group element class names. */
-  /* Example wiggle animation: rotate_0_0_25_-5_50_0_75_5_100_0 -> 0%: 0°, 25%: -5°, 50%: 0°, 75%: 5°, 100%: 0° */
-  loadAnimations() {
-    this.animations = [];
+  loadKeyframes() {
+    this.keyframes = [];
     const animElements = this.elementIcon.querySelectorAll('[id*=rotate_], [id*=translate_]');
 
     animElements.forEach((animElement) => {
       const tokens = animElement.id.split('_')
       const type = tokens.shift();
-      const keyframes = [];
+      const currentKeyframes = [];
       var tokensPerKeyframe = 0;
+      var keyframeCount = 0;
 
       switch (type) {
         case 'rotate':
@@ -80,8 +136,10 @@ export class FtuiIconMulticolor extends FtuiIcon {
           break;
       }
 
-      for (var i = 0; i < tokens.length/tokensPerKeyframe; i++) {
-        var offset = (tokens[i*tokensPerKeyframe] / 100);
+      keyframeCount = Math.floor(tokens.length / tokensPerKeyframe); // round to floor because Figma adds addtional _2, _3, ... to identical id names which need to be ignored
+
+      for (var i = 0; i < keyframeCount; i++) {
+        var offset = (tokens[i * tokensPerKeyframe] / 100);
         var transform = '';
 
         switch (type) {
@@ -92,26 +150,27 @@ export class FtuiIconMulticolor extends FtuiIcon {
             transform = 'translate3D(' + tokens[i*tokensPerKeyframe+1] + 'px, ' + tokens[i*tokensPerKeyframe+2] + 'px, 0)';  // Rotate around center instead the default (top left corner)
             break;
         }
-
-        keyframes.push({ offset, transform });
+        currentKeyframes.push({ offset, transform });
       }
+      
+      this.keyframes.push({element: animElement, keyframes: currentKeyframes });
+    });
+  }
 
-      this.animations.push({ element: animElement, keyframes: keyframes });
+  prepareAnimations() {
+    this.animations = [];
+
+    this.keyframes.forEach(({element, keyframes}) => {
+      const animation = element.animate(keyframes, this.animationOptions);
+      animation.pause();
+      this.animations.push(animation);
     });
   }
 
   animate() {
-    this.animations.forEach(({element, keyframes}) => {
-      element.animate(keyframes, {duration: 500, iterations: 2});
+    this.animations.forEach(animation => {
+      animation.play();
     });
-  }
-
-  static get properties() {
-    return {
-      path: 'icons/multicolor',
-      duration: 1,
-      iterations: 1,
-    };
   }
 }
 
