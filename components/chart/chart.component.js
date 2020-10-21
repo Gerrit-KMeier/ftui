@@ -138,9 +138,6 @@ export class FtuiChart extends FtuiElement {
       Object.keys(FtuiChartData.properties).forEach(property => {
         dataset[property] = dataElement[property];
       });
-      dataset.borderColor = getComputedStyle(this).getPropertyValue('--' + dataset.borderColor).trim() || dataset.borderColor;
-      dataset.backgroundColor = (dataset.backgroundColor.length === 0) ? Chart.helpers.color(dataset.borderColor).alpha(0.2).rgbString() : dataset.backgroundColor;
-      dataset.pointBackgroundColor = dataset.borderColor;
       dataset.data = dataElement.data;
       this.configuration.data.datasets.push(dataset);
     });
