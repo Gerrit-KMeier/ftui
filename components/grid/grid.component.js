@@ -1,13 +1,14 @@
-/* 
+/*
 * Grid component for FTUI version 3
 *
 * Copyright (c) 2019-2020 Mario Stephan <mstephan@shared-files.de>
 * Under MIT License (http://www.opensource.org/licenses/mit-license.php)
-* 
+*
 * https://github.com/knowthelist/ftui
 */
 
 import { FtuiElement } from '../element.component.js';
+// eslint-disable-next-line no-unused-vars
 import { FtuiGridTile } from './grid-tile.component.js';
 
 export class FtuiGrid extends FtuiElement {
@@ -20,7 +21,8 @@ export class FtuiGrid extends FtuiElement {
       baseHeight: 0,
       cols: 0,
       rows: 0,
-      margin: 8
+      margin: 8,
+      responsive: false
     };
     super(properties);
 
@@ -28,11 +30,11 @@ export class FtuiGrid extends FtuiElement {
     this.tiles = this.querySelectorAll('ftui-grid-tile');
     this.configureGrid();
 
-    if (this.resize) {
+    if (this.responsive) {
       window.addEventListener('resize', () => {
         if (this.windowWidth !== window.innerWidth) {
           clearTimeout(this.resizeTimerHandle);
-          this.resizeTimerHandle = setTimeout(this.configureGrid, 500);
+          this.resizeTimerHandle = setTimeout(() => this.configureGrid(), 500);
           this.windowWidth = window.innerWidth;
         }
       });
@@ -42,7 +44,7 @@ export class FtuiGrid extends FtuiElement {
   template() {
     return `<style> @import "components/grid/grid.component.css"; </style>
     <slot></slot>
-        `;
+    `;
   }
 
   configureGrid() {
@@ -62,7 +64,6 @@ export class FtuiGrid extends FtuiElement {
 
     cols = (this.cols > 0) ? this.cols : highestCol;
     rows = (this.rows > 0) ? this.rows : highestRow;
-
     baseWidth = (this.baseWidth > 0) ? this.baseWidth : (window.innerWidth - this.margin) / cols;
     baseHeight = (this.baseHeight > 0) ? this.baseHeight : (window.innerHeight - this.margin) / rows;
 
