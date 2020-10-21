@@ -1,0 +1,128 @@
+/* Use full width of parent */
+:host {
+  width: 100%;
+}
+  
+/* Flex container */
+.row {
+  display: flex;
+}
+
+/* Height of widget */
+#container {
+  height: 80px;
+}
+  
+/* Sizing of the main columns of the widget */
+#icon-container {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 100px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#right-container {
+  flex-grow: 10;
+  flex-shrink: 1;
+  flex-basis: 300px;
+  align-self: center;
+}
+#side-spacer {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 30px;
+}
+
+/* Fixed icon size */
+#icon {
+  width: 50px;
+  height: 50px;
+  --width: 50px;
+  --height: 50px;
+}
+
+
+/* Sizing of the device-title and button columns */
+#label-container {
+  flex: 8;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+#button-container {
+  flex: 4;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+#label {
+  color: var(--text-color);
+  flex: 1;
+  text-align: left;
+}
+#button-on,
+#button-off {
+  flex: 0;
+  padding: 0px 0px 0px 20px;
+}
+
+/* Style attributes of the buttons */
+.button-active {
+  color: var(--primary-color);
+}
+.button-inactive {
+  color: var(--medium-color);
+}
+
+/* Sizing of the slider */
+#range-container {
+  height: 30px;
+  flex: 12;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Override style attributes for the slider */
+.rangeable-container {
+    pointer-events: none;
+}
+.rangeable-handle {
+  pointer-events: auto;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-color: var(--light-color);
+  /* -webkit-box-shadow: 0px 0px 0px 3px var(--medium-color) !important;
+  box-shadow: 0px 0px 0px 3px var(--medium-color) !important; */
+}
+.rangeable-progress, .rangeable-track {
+  height: 4px;
+  border-radius: 2px;
+}
+.rangeable-track {
+  background-color: var(--dark-color);
+}
+.rangeable-progress {
+    background-color: var(--medium-color);
+}
+.rangeable-tooltip {
+    background-color: var(--medium-color);
+    bottom: calc(100% + 10px);
+    padding: 5px 13px;
+    border-radius: 6px;
+    font-weight: inherit;
+    font-size: inherit;
+    font-family: inherit;
+}
+.rangeable-tooltip::before {
+  border-color: var(--medium-color) transparent transparent;
+  border-top-color: var(--medium-color);
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+  

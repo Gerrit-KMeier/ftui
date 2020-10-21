@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--
+    /* FHEM tablet ui */
+    /**
+    * UI builder framework for FHEM
+    *
+    * Version: 3.0.0
+    *
+    * Copyright (c) 2015-2020 Mario Stephan <mstephan@shared-files.de>
+    * Under MIT License (http://www.opensource.org/licenses/mit-license.php)
+    * https://github.com/knowthelist/ftui
+    */
+    -->
+  <base href="../" />
+  <script src="ftui.js"></script>
+  <link href="ftui.css" rel="stylesheet">
+  <link href="themes/indigo-theme.css" rel="stylesheet">
+  <link href="favicon.ico" rel="icon" type="image/x-icon" />
+
+  <title>FTUI Example Dimmer</title>
+</head>
+
+<body>
+  <ftui-grid base-width="600" base-height="320" resize="1">
+    <ftui-grid-tile row="1" col="1" height="1" width="1">
+      <header>Wohnzimmer</header>
+
+        <ftui-dimmer title="Bodenleiste" [value]="HUEDevice10:dimmerVal" (value)="set HUEDevice10 pct $value"></ftui-dimmer>
+        <ftui-dimmer title="Bogenlampe" min="0" max="99" icon-on="bulb_on" icon-off="bulb_off" [value]="Dimmer02:dimmerVal" (value)="set Dimmer02 dim $value"></ftui-dimmer>
+        <ftui-dimmer title="Deckenlampe" min="0" max="99" icon-on="shade_on" icon-off="shade_off" [value]="Dimmer09:dimmerVal" (value)="set Dimmer09 dim $value"></ftui-dimmer>
+
+    </ftui-grid-tile>
+  </ftui-grid>
+</body>
+
+</html>
