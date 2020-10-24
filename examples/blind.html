@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--
+    /* FHEM tablet ui */
+    /**
+    * UI builder framework for FHEM
+    *
+    * Version: 3.0.0
+    *
+    * Copyright (c) 2015-2020 Mario Stephan <mstephan@shared-files.de>
+    * Under MIT License (http://www.opensource.org/licenses/mit-license.php)
+    * https://github.com/knowthelist/ftui
+    */
+    -->
+  <base href="../" />
+  <script src="ftui.js"></script>
+  <link href="ftui.css" rel="stylesheet">
+  <link href="themes/indigo-theme.css" rel="stylesheet">
+  <link href="favicon.ico" rel="icon" type="image/x-icon" />
+
+  <title>FTUI Example Blind</title>
+</head>
+
+<body>
+  <ftui-grid base-width="600" base-height="320" resize="1">
+    <ftui-grid-tile row="1" col="1" height="1" width="1">
+      <header>Wohnzimmer</header>
+
+        <ftui-blind title="Wohnzimmerfenster" [value]="Blind02:positionVal" min="0" max="99" (value)="set Blind02 dim $value"></ftui-blind>
+        <ftui-blind title="Küchenfenster" [value]="Blind04:positionVal" min="0" max="99" (value)="set Blind02 dim $value"></ftui-blind>
+        <ftui-blind title="Terrassentür" [value]="Blind03:positionVal" min="0" max="99" (value)="set Blind02 dim $value"></ftui-blind>
+
+    </ftui-grid-tile>
+  </ftui-grid>
+</body>
+
+</html>

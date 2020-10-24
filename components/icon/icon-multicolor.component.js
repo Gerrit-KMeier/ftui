@@ -58,9 +58,8 @@ export class FtuiIconMulticolor extends FtuiIcon {
       path: 'icons/multicolor',
       duration: 1.0,            // in seconds
       iterations: 1,            // -1 for infinite
-      direction: 'normal',       // normal, reverse, alternate, alternate-reverse
-      currentTime: 0,
-      autoPlay: true
+      direction: 'normal',      // normal, reverse, alternate, alternate-reverse
+      autoplay: 1               // start animation automatically when the icon changed
     };
   }
 
@@ -80,9 +79,6 @@ export class FtuiIconMulticolor extends FtuiIcon {
           this.animate();
         } 
         break;
-      case 'currentTime':
-        this.prepareAnimations;
-
     }
   }
 
@@ -91,7 +87,7 @@ export class FtuiIconMulticolor extends FtuiIcon {
     this.loadKeyframes();
     this.prepareAnimations();
 
-    if (this.autoPlay) {
+    if (this.autoplay) {
       this.animate();
     } 
   }
