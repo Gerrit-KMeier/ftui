@@ -76,13 +76,9 @@
   --tab-contrast-color: var(--gray33);
   --tab-active-color: var(--gray55);
 
+  --chart-text-color: var(--gray55);
+
   --border-color: var(--gray10);
-
-
-  /* Default font */
-
-  --font-family: Roboto, Arial;
-
 
   /* Theme specific variables */
 
@@ -100,7 +96,7 @@ html, body {
 }
 
 body {
-  font-family: var(--font-family);
+  font-family: 'Roboto', 'Arial';
   font-weight: var(--font-weight);    /*    Default font weight               */
   font-size: medium;
   color: var(--text-color);
