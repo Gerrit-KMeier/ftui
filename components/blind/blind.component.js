@@ -122,7 +122,7 @@ export class FtuiBlind extends FtuiElement {
         this.rangeable.update();
         break;
       case 'value':
-        this.elementIcon.animationPosition = Number(newValue) / 100;
+        this.elementIcon.animationPosition = 1.0 - (Number(newValue) / this.max);
         this.rangeable.setValue(Number(this.value));
         this.rangeable.update();
         break;

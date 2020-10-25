@@ -36,6 +36,7 @@ export class FtuiIconMulticolor extends FtuiIcon {
 
   set animationPosition(position) {
     const paused = (this.animations?.[0]?.playState === 'paused');
+    position = (position == 1) ? 0.999 : position; // currentTime equal to the end of the animation will reset the animaton
     this.animations.forEach(animation => {
       if (!paused) {
         animation.play();
