@@ -99,7 +99,7 @@ export class FtuiBlind extends FtuiElement {
       path: 'icons/multicolor',
       type: 'svg',
       icon: 'blind',
-
+      
       debounce: 2000
     };
   }
@@ -122,6 +122,7 @@ export class FtuiBlind extends FtuiElement {
         this.rangeable.update();
         break;
       case 'value':
+        this.elementIcon.pause();
         this.elementIcon.animationPosition = 1.0 - (Number(newValue) / this.max);
         this.rangeable.setValue(Number(this.value));
         this.rangeable.update();
@@ -147,11 +148,15 @@ export class FtuiBlind extends FtuiElement {
   
   onButtonClick(sender) {
     if (sender === this.elementButtonUp) {
-      this.value = this.max; 
+      this.value = this.max;
+      this.elementIcon.direction = 'reverse';
+      this.elementIcon.animate();
     } else if (sender === this.elementButtonStop && this.stop.length > 0) {
-         fhemService.updateFhem(this.stop);
+      fhemService.updateFhem(this.stop);
     } else if (sender === this.elementButtonDown) {
-       this.value = this.min;
+      this.value = this.min;
+      this.elementIcon.direction = 'normal';
+      this.elementIcon.animate();
     }
   }
 }
