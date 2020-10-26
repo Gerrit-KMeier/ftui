@@ -169,6 +169,12 @@ export class FtuiIconMulticolor extends FtuiIcon {
       animation.play();
     });
   }
+
+  pause() {
+    this.animations.forEach(animation => {
+      animation.pause();
+    });
+  }
 }
 
 window.customElements.define("ftui-icon-multicolor", FtuiIconMulticolor);
