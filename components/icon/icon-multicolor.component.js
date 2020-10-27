@@ -1,8 +1,18 @@
 /*
- * Multicolor Icon widget for FTUI version 3
- *
- * https://github.com/knowthelist/ftui
- */
+* Icon-Multicolor component
+*
+* Copyright (c) 2019-2020 Tobias Wiedenmann <thyraz@gmail.com>
+* Under MIT License (http://www.opensource.org/licenses/mit-license.php)
+* 
+*
+* for FTUI version 3
+*
+* Copyright (c) 2019-2020 Mario Stephan <mstephan@shared-files.de>
+* Under MIT License (http://www.opensource.org/licenses/mit-license.php)
+*
+* https://github.com/knowthelist/ftui
+*/
+
 
 import { FtuiIcon } from "../icon/icon.component.js";
 import * as ftui from '../../modules/ftui/ftui.helper.js';
@@ -60,7 +70,9 @@ export class FtuiIconMulticolor extends FtuiIcon {
       duration: 1.0,            // in seconds
       iterations: 1,            // -1 for infinite
       direction: 'normal',      // normal, reverse, alternate, alternate-reverse
-      autoplay: 1               // start animation automatically when the icon changed
+      autoplay: 1,              // start animation automatically when the icon changed
+      trigger: 0,               // events with values that are mapped to '1' start the animation (best used with autoplay 0)
+      progress: 0               // jumps to a specific animation frame when no animation is running (best used with autoplay 0). From 0.0 to 1.0
     };
   }
 
@@ -79,6 +91,14 @@ export class FtuiIconMulticolor extends FtuiIcon {
         if (running) {
           this.animate();
         } 
+        break;
+      case 'trigger':
+        if (newValue == 1) {
+          this.animate();
+        }
+        break;
+      case 'progress':
+        this.animationPosition = newValue;
         break;
     }
   }
@@ -133,7 +153,7 @@ export class FtuiIconMulticolor extends FtuiIcon {
           break;
       }
 
-      keyframeCount = Math.floor(tokens.length / tokensPerKeyframe); // round to floor because Figma adds addtional _2, _3, ... to identical id names which need to be ignored
+      keyframeCount = Math.floor(tokens.length / tokensPerKeyframe); // round to floor because Figma adds addtional _2, _3, ... to identical id names which needs to be ignored
 
       for (var i = 0; i < keyframeCount; i++) {
         var offset = (tokens[i * tokensPerKeyframe] / 100);
@@ -155,6 +175,10 @@ export class FtuiIconMulticolor extends FtuiIcon {
   }
 
   prepareAnimations() {
+    this.animations.forEach(animation => {
+      animation.cancel();
+    });
+
     this.animations = [];
 
     this.keyframes.forEach(({element, keyframes}) => {

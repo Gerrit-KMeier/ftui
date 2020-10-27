@@ -3,13 +3,19 @@
 
 <head>
   <!--
+    /* Icon-Multicolor Demo */
+    /**
+    * Copyright (c) 2019-2020 Tobias Wiedenmann <thyraz@gmail.com>
+    * Under MIT License (http://www.opensource.org/licenses/mit-license.php)
+    * 
+    */
     /* FHEM tablet ui */
     /**
     * UI builder framework for FHEM
     *
     * Version: 3.0.0
     *
-    * Copyright (c) 2015-2019 Mario Stephan <mstephan@shared-files.de>
+    * Copyright (c) 2015-2020 Mario Stephan <mstephan@shared-files.de>
     * Under MIT License (http://www.opensource.org/licenses/mit-license.php)
     * https://github.com/knowthelist/ftui
     */
@@ -29,10 +35,17 @@
     <ftui-grid-tile row="1" col="1" height="9" width="3">
       <div class="cell">
         
+        <!-- demo icons with endless animation-->
         <ftui-icon-multicolor name="bulb_on" iterations="-1"></ftui-icon-multicolor>
         <ftui-icon-multicolor name="shade_on" iterations="-1"></ftui-icon-multicolor>
         <ftui-icon-multicolor name="blind" iterations="-1" duration="1.0" direction="alternate"></ftui-icon-multicolor>
-      
+
+        <!-- animation triggered by Fhem -->
+        <ftui-icon-multicolor name="blind" [trigger]="Dummy01:state | map('`.*`:0, moving: 1')"></ftui-icon-multicolor>
+
+        <!-- No animation running, currently displayed keyframe controlled by Fhem -->
+        <ftui-icon-multicolor name="blind" autoplay="0" [progress]="Dummy01:positionNormalized"></ftui-icon-multicolor>
+
       </div>
     </ftui-grid-tile>
   </ftui-grid>
