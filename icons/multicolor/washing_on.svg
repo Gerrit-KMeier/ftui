@@ -1,0 +1,51 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <g id="washing_on">
+        <g id="washing_on_2">
+            <g id="color_white">
+                <path id="Device Frame" fill-rule="evenodd" clip-rule="evenodd" d="M11 11.017C11 8.80788 12.7909 7.01702 15 7.01702H35C37.2091 7.01702 39 8.80788 39 11.017V38.3109C39 40.5201 37.2091 42.3109 35 42.3109H15C12.7909 42.3109 11 40.5201 11 38.3109L11 11.017Z" fill="white"/>
+            </g>
+            <g id="color_gray75" opacity="0.5">
+                <path id="Device Frame Copy" fill-rule="evenodd" clip-rule="evenodd" d="M11 11.017C11 8.80788 12.7909 7.01702 15 7.01702H35C37.2091 7.01702 39 8.80788 39 11.017V38.3109C39 40.5201 37.2091 42.3109 35 42.3109H15C12.7909 42.3109 11 40.5201 11 38.3109L11 11.017Z" fill="#C7C9D7"/>
+            </g>
+            <g id="color_gray75_2">
+                <path id="Top" fill-rule="evenodd" clip-rule="evenodd" d="M39 15.084H11V11.017C11 8.80788 12.7909 7.01701 15 7.01701H35C37.2091 7.01701 39 8.80787 39 11.017V15.084Z" fill="#C7C9D7"/>
+            </g>
+            <g id="Group">
+                <g id="color_gray55">
+                    <circle id="Outer Ring" cx="25" cy="29" r="11" fill="#999DB0"/>
+                </g>
+                <g id="color_gray33">
+                    <circle id="Inner Ring Copy" cx="25" cy="29" r="8" fill="#5F6373"/>
+                </g>
+                <g id="color_gray25" opacity="0.5">
+                    <circle id="Inner Ring" cx="25" cy="29" r="8" fill="#2B2D3C"/>
+                </g>
+                <g id="Bulleye">
+                    <g id="color_gray20">
+                        <ellipse id="Ring" cx="25.0001" cy="29" rx="6" ry="6" transform="rotate(-180 25.0001 29)" fill="#262836"/>
+                    </g>
+                    <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="19" y="23" width="12" height="12">
+                        <ellipse id="Oval 14 Copy 7" cx="25.0001" cy="29" rx="6" ry="6" transform="rotate(-180 25.0001 29)" fill="#262836"/>
+                    </mask>
+                    <g mask="url(#mask0)">
+                        <g id="color_blue">
+                            <g id="translate_0_0_0_100_44_0">
+                                <g id="rotate_0_0_25_-5_50_0_75_5_100_0">
+                                    <path id="Water" d="M-44 41L-44 32C-44 32 -42.5 33 -37.5 33C-35.0595 33 -33.9294 32.2853 -32.7722 31.5536L-32.7722 31.5536C-31.5587 30.7861 -30.3155 30 -27.5 30C-24.6121 30 -22.9649 30.4135 -21.4002 30.8063C-19.9849 31.1616 -18.6372 31.5 -16.5 31.5C-14.3092 31.5 -13.0665 30.4334 -11.7911 29.3388C-10.4466 28.185 -9.06581 27 -6.49997 27C-3.57104 27 -2.0147 28.7157 -0.725386 30.1371C-0.725386 30.1371 0.000123262 31 1.50012 32C3.00009 33 4.96312 33 6.50004 33H6.50014C8.94059 33 10.0708 32.2853 11.2279 31.5536C12.4414 30.7861 13.6846 30 16.5001 30C19.388 30 21.0352 30.4135 22.5999 30.8063C24.0152 31.1616 25.3629 31.5 27.5001 31.5C29.6909 31.5 30.9336 30.4334 32.2091 29.3388C33.5535 28.185 34.9343 27 37.5001 27C40.4291 27 41.9854 28.7157 43.2747 30.1371C44.1864 31.1421 44.9646 32 46.0001 32C48.5001 32 45.0001 41 45.0001 41L-44 41Z" fill="#228ACE"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="color_gray55_2">
+                <ellipse id="Knob1" cx="15" cy="11.0504" rx="2" ry="2.01681" fill="#999DB0"/>
+                <ellipse id="Knob2" cx="21" cy="11.0504" rx="2" ry="2.01681" fill="#999DB0"/>
+            </g>
+            <g id="color_gray33_2">
+                <rect id="Display" x="29" y="9.03362" width="8" height="4.03362" rx="2" fill="#5F6373"/>
+            </g>
+        </g>
+    </g>
+</svg>

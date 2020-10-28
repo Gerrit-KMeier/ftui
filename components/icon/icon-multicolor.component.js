@@ -158,16 +158,17 @@ export class FtuiIconMulticolor extends FtuiIcon {
       for (var i = 0; i < keyframeCount; i++) {
         var offset = (tokens[i * tokensPerKeyframe] / 100);
         var transform = '';
+        const transformOrigin = '50% 50%'; // Rotate around center instead the default (top left corner)
 
         switch (type) {
           case 'rotate':
-            transform = 'translate3D(50%, 50%, 0) rotate(' + tokens[i*tokensPerKeyframe+1] + 'deg) translate3D(-50%, -50%, 0)';  // Rotate around center instead the default (top left corner)
+            transform = 'rotate(' + tokens[i*tokensPerKeyframe+1] + 'deg)';  // Rotate around center instead the default (top left corner)
             break;
           case 'translate':
             transform = 'translate3D(' + tokens[i*tokensPerKeyframe+1] + 'px, ' + tokens[i*tokensPerKeyframe+2] + 'px, 0)';  // Rotate around center instead the default (top left corner)
             break;
         }
-        currentKeyframes.push({ offset, transform });
+        currentKeyframes.push({ offset, transform, transformOrigin});
       }
       
       this.keyframes.push({element: animElement, keyframes: currentKeyframes });

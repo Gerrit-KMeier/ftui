@@ -6,3 +6,7 @@
   width: var(--width, unset);
   height: var(--height, unset);
 }
+
+[id^="rotate_"] {
+  transform-box: fill-box; /* rotate realtive to the rotation container origin and not the svg origin */
+}

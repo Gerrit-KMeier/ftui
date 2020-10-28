@@ -38,7 +38,8 @@
         <!-- demo icons with endless animation-->
         <ftui-icon-multicolor name="bulb_on" iterations="-1"></ftui-icon-multicolor>
         <ftui-icon-multicolor name="shade_on" iterations="-1"></ftui-icon-multicolor>
-        <ftui-icon-multicolor name="blind" iterations="-1" duration="1.0" direction="alternate"></ftui-icon-multicolor>
+        <ftui-icon-multicolor name="blind" iterations="-1" direction="alternate"></ftui-icon-multicolor>
+        <ftui-icon-multicolor name="washing_on" iterations="-1"></ftui-icon-multicolor>
 
         <!-- animation triggered by Fhem -->
         <ftui-icon-multicolor name="blind" [trigger]="Dummy01:state | map('`.*`: 0, moving: 1')" direction="alternate" iterations="2" autoplay="0"></ftui-icon-multicolor>
