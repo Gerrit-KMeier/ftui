@@ -26,7 +26,7 @@
 <body>
 
 <!--   <ftui-grid cols="30" rows="20" resize> -->
-  <ftui-grid base-width="70" base-height="70">
+  <ftui-grid base-width="70" base-height="70" margin="5">
 
     <ftui-grid-tile row="1" col="1" height="10" width="1" shape="round">
       <div class="column">
@@ -40,25 +40,29 @@
     </ftui-grid-tile>
 
     <ftui-tab-view id="View1">
+
       <ftui-grid-tile row="1" col="2" height="2" width="2" shape="round" color="primary">
         <div class="cell">
           <ftui-clock format="ee" class="bigger"></ftui-clock>
           <ftui-clock format="DD" class="tall"></ftui-clock>
         </div>
       </ftui-grid-tile>
+
       <ftui-grid-tile row="1" col="4" height="2" width="2" shape="round" 
-        [color]="WCLuft | map('1000:warning, 2000:danger')">
+        [color]="WCLuft | map('0:ok, 1000:warning, 2000:danger')">
         <div class="cell w-80">
           <label class="big align-left">CO²</label>
           <ftui-label class="large" [text]="WCLuft | part(1) | toInt()">
             <span slot="end" class="mini">ppm</span>
           </ftui-label>
         </div>
+      </ftui-grid-tile>
 
-      </ftui-grid-tile>
       <ftui-grid-tile row="3" col="2" height="2" width="2" shape="round">
-3
+        <ftui-knob [value]="THSensorWZ:temperature" width="120" offset-y="10" 
+                   type="handle" min="19" max="25" unit="°C" readonly has-value-text></ftui-knob>
       </ftui-grid-tile>
+
       <ftui-grid-tile row="3" col="4" height="2" width="3" shape="round">
         <div class="column">
           <div class="row h-40">
@@ -73,13 +77,13 @@
         </div>
       </ftui-grid-tile>
 
-      <ftui-grid-tile row="1" col="15" height="2" width="2" shape="round">
+      <ftui-grid-tile row="1" col="6" height="2" width="2" shape="round">
         <ftui-circlemenu direction="vertical">
 
           <ftui-icon name="home1"></ftui-icon>
 
           <ftui-button [(value)]="dummy.P1" fill="outline" shape="circle">
-            <ftui-icon [name]="dummy.P1 | map('on:lightbulb-on, off:lightbulb-off')"></ftui-icon>
+            <ftui-icon [name]="dummy1 | map('on:lightbulb-on, off:lightbulb-off, `.*`:none')"></ftui-icon>
           </ftui-button>
 
           <ftui-button-nice get="dummy2"></ftui-button-nice>
@@ -88,24 +92,25 @@
 
           <ftui-button-nice get="ftuitest"></ftui-button-nice>
 
-    </ftui-circlemenu>
+        </ftui-circlemenu>
       </ftui-grid-tile>
-<!--  <ftui-grid-tile row="3" col="2" height="4" width="4" shape="round">
 
-      </ftui-grid-tile> -->
-<!--       <ftui-grid-tile row="3" col="4" height="2" width="2" shape="round">
+      <ftui-grid-tile row="1" col="8" height="2" width="2" shape="round">
 
       </ftui-grid-tile>
-      <ftui-grid-tile row="1" col="6" height="4" width="4" shape="round">
+      <ftui-grid-tile row="1" col="10" height="2" width="2" shape="round">
 
       </ftui-grid-tile>
-      <ftui-grid-tile row="1" col="10" height="6" width="6" shape="round">
+      <ftui-grid-tile row="3" col="7" height="2" width="1" shape="round">
 
       </ftui-grid-tile>
-      <ftui-grid-tile row="1" col="16" height="6" width="6" shape="round">
+      <ftui-grid-tile row="3" col="8" height="2" width="2" shape="round">
 
-      </ftui-grid-tile> -->
-      <ftui-grid-tile row="8" col="2" height="3" width="10" shape="round">
+      </ftui-grid-tile>
+      <ftui-grid-tile row="3" col="10" height="2" width="2" shape="round">
+
+      </ftui-grid-tile>
+      <ftui-grid-tile row="5" col="2" height="3" width="10" shape="round">
         <div class="row">
           <div class="column">
             <label>Heute</label>
