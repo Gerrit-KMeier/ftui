@@ -1,31 +1,35 @@
-<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="washing_off">
-<g id="washing">
-<g id="color_gray55">
-<path id="DeviceFrame" fill-rule="evenodd" clip-rule="evenodd" d="M10 10.0002C10 7.7911 11.7909 6.00024 14 6.00024H36C38.2091 6.00024 40 7.7911 40 10.0002V41C40 43.2091 38.2091 45 36 45H14C11.7909 45 10 43.2091 10 41L10 10.0002Z" fill="#999DB0"/>
-</g>
-<g id="color_gray75">
-<path id="DeviceFrame_2" opacity="0.75" fill-rule="evenodd" clip-rule="evenodd" d="M10 10.0002C10 7.7911 11.7909 6.00024 14 6.00024H36C38.2091 6.00024 40 7.7911 40 10.0002V41C40 43.2091 38.2091 45 36 45H14C11.7909 45 10 43.2091 10 41L10 10.0002Z" fill="#C7C9D7"/>
-</g>
-<g id="color_gray55_2">
-<path id="Top" fill-rule="evenodd" clip-rule="evenodd" d="M40 15H10V10C10 7.79086 11.7909 6 14 6H36C38.2091 6 40 7.79086 40 10V15Z" fill="#999DB0"/>
-</g>
-<g id="color_gray40">
-<circle id="Outer Circle" cx="25" cy="30" r="13" fill="#6F7383"/>
-</g>
-<g id="color_gray25">
-<circle id="Inner Circle" cx="25" cy="30" r="10" fill="#2B2D3C"/>
-</g>
-<g id="color_gray33">
-<circle id="Inner Circle Copy" opacity="0.25" cx="25" cy="30" r="10" fill="#5F6373"/>
-</g>
-<g id="color_gray33_2">
-<ellipse id="Knob1" cx="14" cy="10" rx="2" ry="2" fill="#5F6373"/>
-<circle id="Knob2" cx="21" cy="10" r="2" fill="#5F6373"/>
-</g>
-<g id="color_gray25_2">
-<rect id="Display" x="29" y="8" width="9" height="4" rx="2" fill="#2B2D3C"/>
-</g>
-</g>
-</g>
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <g id="washing_off">
+        <g id="washing">
+            <g id="color_gray55">
+                <path id="DeviceFrame" fill-rule="evenodd" clip-rule="evenodd" d="M10 10.0002C10 7.7911 11.7909 6.00024 14 6.00024H36C38.2091 6.00024 40 7.7911 40 10.0002V41C40 43.2091 38.2091 45 36 45H14C11.7909 45 10 43.2091 10 41L10 10.0002Z" fill="#999DB0"/>
+            </g>
+            <g id="color_gray75">
+                <path id="DeviceFrame_2" opacity="0.75" fill-rule="evenodd" clip-rule="evenodd" d="M10 10.0002C10 7.7911 11.7909 6.00024 14 6.00024H36C38.2091 6.00024 40 7.7911 40 10.0002V41C40 43.2091 38.2091 45 36 45H14C11.7909 45 10 43.2091 10 41L10 10.0002Z" fill="#C7C9D7"/>
+            </g>
+            <g id="color_gray55_2">
+                <path id="Top" fill-rule="evenodd" clip-rule="evenodd" d="M40 15H10V10C10 7.79088 11.7909 6.00002 14 6.00002H36C38.2091 6.00002 40 7.79088 40 10V15Z" fill="#999DB0"/>
+            </g>
+            <g id="color_gray40">
+                <circle id="Outer Circle" cx="25" cy="30" r="13" fill="#6F7383"/>
+            </g>
+            <g id="color_gray25">
+                <circle id="Inner Circle" cx="25" cy="30" r="10" fill="#2B2D3C"/>
+            </g>
+            <g id="color_gray25_2">
+                <circle id="Inner Circle_2" cx="25" cy="30" r="10" fill="#2B2D3C"/>
+            </g>
+            <g id="color_gray33">
+                <circle id="Inner Circle Copy" opacity="0.25" cx="25" cy="30" r="8" fill="#5F6373"/>
+            </g>
+            <g id="color_gray33_2">
+                <ellipse id="Knob1" cx="14" cy="10" rx="2" ry="2" fill="#5F6373"/>
+                <circle id="Knob2" cx="21" cy="10" r="2" fill="#5F6373"/>
+            </g>
+            <g id="color_gray25_3">
+                <rect id="Display" x="29" y="8" width="9" height="4" rx="2" fill="#2B2D3C"/>
+            </g>
+        </g>
+    </g>
 </svg>
