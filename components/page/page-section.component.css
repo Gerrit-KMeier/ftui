@@ -1,0 +1,12 @@
+:host {
+  display: inline-block;
+  width: 100%;
+  padding: 20px 0px;
+  background-color: var(--grid-background-color);
+}
+
+:host ::slotted(header) {
+  color: var(--grid-header-color);
+  background: var(--grid-header-background-color);
+}
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--
+    /* FHEM tablet ui - FTUI */
+    /**
+    * UI builder framework for FHEM
+    *
+    * Version: 3.0.0
+    *
+    * Copyright (c) 2015-2020 Mario Stephan <mstephan@shared-files.de>
+    * Under MIT License (http://www.opensource.org/licenses/mit-license.php)
+    * https://github.com/knowthelist/ftui
+    */
+    -->
+  <base href="../" />
+  <script src="ftui.js"></script>
+  <link href="ftui.css" rel="stylesheet">
+  <link href="themes/indigo-theme.css" rel="stylesheet">
+  <link href="favicon.ico" rel="icon" type="image/x-icon" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <title>FTUI Mobile Example</title>
+</head>
+
+<body hasFooter>
+
+  <ftui-tab-view id="View1">
+
+    <ftui-page>
+      <ftui-page-section>
+        <ftui-dimmer title="BOGENLAMPE" min="0" max="99" [value]="Dimmer02:dimmerVal" (value)="set Dimmer02 dim $value"></ftui-dimmer>
+        <ftui-dimmer title="BODENLEISTE" [value]="HUEDevice10:dimmerVal" (value)="set HUEDevice10 pct $value"></ftui-dimmer>
+      </ftui-page-section>
+      <ftui-page-section>
+        <ftui-blind title="SEITENFENSTER" min="0" max="99" [value]="Blind01:positionVal" (value)="set Blind01 dim $value" stop="set Blind01 stop"></ftui-blind>
+      </ftui-page-section>
+    </ftui-page>
+
+  </ftui-tab-view>
+
+
+  <ftui-tab-view id="View2">
+    <div class="cell huge">Tab2</div>
+  </ftui-tab-view>
+
+
+  <ftui-tab-view id="View3">
+    <div class="cell huge">Tab3</div>
+  </ftui-tab-view>
+
+
+  <footer class="fixed">
+    <div class="footer-container row">
+
+      <ftui-tab fill="clear" direction="vertical" view="View1" active>
+        <ftui-icon name="home1"></ftui-icon>
+      </ftui-tab>
+      <ftui-tab fill="clear" direction="vertical" view="View2">
+        <ftui-icon name="cog"></ftui-icon>
+      </ftui-tab>
+      <ftui-tab fill="clear" direction="vertical" view="View3">
+        <ftui-icon name="clock-o"></ftui-icon>
+      </ftui-tab>
+
+    </div>
+  </footer>
+
+</body>
+
+</html>
