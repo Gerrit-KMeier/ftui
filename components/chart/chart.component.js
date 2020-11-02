@@ -32,12 +32,13 @@ export class FtuiChart extends FtuiElement {
         responsive: true,
         maintainAspectRatio: false,
         title: {
+          padding: 0,
           display: false,
           text: '',
           font: {
             size: getStylePropertyValue('--chart-title-font-size') || 16,
-            style: '500',
-            color: getStylePropertyValue('--light-color')
+            style: getStylePropertyValue('--chart-title-font-style') || '500',
+            color: getStylePropertyValue('--chart-title-color') || getStylePropertyValue('--light-color')
           }
         },
         legend: {
@@ -46,7 +47,8 @@ export class FtuiChart extends FtuiElement {
             boxWidth: 6,
             padding: 8,
             font: {
-              size: getStylePropertyValue('--chart-legend-font-size') || 13
+              size: getStylePropertyValue('--chart-legend-font-size') || 13,
+              color: getStylePropertyValue('--chart-legend-color') || getStylePropertyValue('--chart-text-color')
             },
             filter: item => item.text
           }
@@ -93,6 +95,7 @@ export class FtuiChart extends FtuiElement {
 
     Chart.defaults.font.color = getStylePropertyValue('--chart-text-color');
     Chart.defaults.font.family = getStylePropertyValue('--chart-font-family');
+    Chart.defaults.font.style = getStylePropertyValue('--chart-font-style') || undefined;
     this.chart = new Chart(this.chartElement, this.configuration);
 
     this.chartContainer.style.width = this.width;
