@@ -42,9 +42,16 @@
       </ftui-page-section>
 
       <ftui-page-section>
-        <ftui-chart title="TEMPERATUR" height="250px">
-          <ftui-chart-data label="GARTEN" point-radius="0" tension="0.3" border-color="#f1c40f" log="DbLog" file="history" spec="Thermometer02:temperatureVal"></ftui-chart-data>
-          <ftui-chart-data label="WOHNZIMMER" point-radius="0" tension="0.3" fill border-color="#d63056" log="DbLog" file="history" spec="Thermometer06:temperatureVal"></ftui-chart-data>
+        <ftui-chart title="TEMPERATUR (GARTEN)" height="250px">
+          <ftui-chart-data label="TERASSE" point-radius="0" tension="0.3" fill border-color="#228ace" log="DbLog" file="history" spec="Thermometer02:temperatureVal"></ftui-chart-data>
+        </ftui-chart>
+        <ftui-chart title="TEMPERATUR (INNEN)" height="250px">
+          <ftui-chart-data label="WOHN" point-radius="0" tension="0.3" fill border-color="#8e44ad" log="DbLog" file="history" spec="Thermometer06:temperatureVal"></ftui-chart-data>
+          <ftui-chart-data label="LAURIN" point-radius="0" tension="0.3" fill border-color="#f1c40f" log="DbLog" file="history" spec="Thermometer05:temperatureVal"></ftui-chart-data>
+          <ftui-chart-data label="LENN" point-radius="0" tension="0.3" fill border-color="#d63056" log="DbLog" file="history" spec="Thermometer04:temperatureVal"></ftui-chart-data>
+          <ftui-chart-data label="SCHLAF" point-radius="0" tension="0.3" fill border-color="#228ace" log="DbLog" file="history" spec="Thermometer01:temperatureVal"></ftui-chart-data>
+          <ftui-chart-data label="BAD" point-radius="0" tension="0.3" fill border-color="#27ae60" log="DbLog" file="history" spec="Thermometer03:temperatureVal"></ftui-chart-data>
+          <ftui-chart-data label="WC" hidden point-radius="0" tension="0.3" fill border-color="#ECA209" log="DbLog" file="history" spec="Thermometer07:temperatureVal"></ftui-chart-data>
         </ftui-chart>
       </ftui-page-section>
       
