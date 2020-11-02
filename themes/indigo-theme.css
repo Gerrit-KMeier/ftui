@@ -76,7 +76,7 @@
   --tab-contrast-color: var(--gray33);
   --tab-active-color: var(--gray55);
 
-  --chart-text-color: var(--gray55);
+  --chart-text-color: var(--gray33);
 
   --border-color: var(--gray10);
 
@@ -86,7 +86,10 @@
   --font-weight: 500;
   --tile-padding: 20px;
 
+  --chart-title-color: var(--white);
+  --chart-legend-color: var(--gray55);
   --chart-font-family: "Roboto";
+  --chart-font-style: 500;
   
 }
 
