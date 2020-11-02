@@ -103,6 +103,8 @@ export class FtuiBlind extends FtuiElement {
       max: 100,
       value: -99,
 
+      up: '',
+      down: '',
       stop: '',
       
       path: 'icons/multicolor',
@@ -156,14 +158,14 @@ export class FtuiBlind extends FtuiElement {
   }
   
   onButtonClick(sender) {
-    if (sender === this.elementButtonUp) {
-      this.value = this.max;
+    if (sender === this.elementButtonUp && this.up.length > 0) {
+      fhemService.updateFhem(this.up);
       this.elementIcon.direction = 'reverse';
       this.elementIcon.animate();
     } else if (sender === this.elementButtonStop && this.stop.length > 0) {
       fhemService.updateFhem(this.stop);
-    } else if (sender === this.elementButtonDown) {
-      this.value = this.min;
+    } else if (sender === this.elementButtonDown && this.down.length > 0) {
+      fhemService.updateFhem(this.down);
       this.elementIcon.direction = 'normal';
       this.elementIcon.animate();
     }
