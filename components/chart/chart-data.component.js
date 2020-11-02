@@ -43,7 +43,7 @@ export class FtuiChartData extends FtuiElement {
       unit: '°C',
       timeUnit: 'day',
       update: '',
-      lineTension: '0.0'
+      tension: '0.0'
     };
   }
 
