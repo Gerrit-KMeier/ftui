@@ -30,8 +30,8 @@
 <body hasFooter>
 
   <ftui-tab-view id="View1">
-
     <ftui-page>
+
       <ftui-page-section>
         <ftui-dimmer title="BOGENLAMPE" min="0" max="99" [value]="Dimmer02:dimmerVal" (value)="set Dimmer02 dim $value"></ftui-dimmer>
         <ftui-dimmer title="BODENLEISTE" [value]="HUEDevice10:dimmerVal" (value)="set HUEDevice10 pct $value"></ftui-dimmer>
@@ -39,8 +39,15 @@
       <ftui-page-section>
         <ftui-blind title="SEITENFENSTER" min="0" max="99" [value]="Blind01:positionVal" (value)="set Blind01 dim $value" stop="set Blind01 stop"></ftui-blind>
       </ftui-page-section>
-    </ftui-page>
 
+      <ftui-page-section>
+        <ftui-chart title="TEMPERATUR" height="500px">
+          <ftui-chart-data label="GARTEN" point-radius="0" line-tension="0.3" border-color="#f1c40f" log="DbLog" file="history" spec="Thermometer02:temperatureVal"></ftui-chart-data>
+          <ftui-chart-data label="WOHNZIMMER" point-radius="0" line-tension="0.3" fill border-color="#d63056" log="DbLog" file="history" spec="Thermometer06:temperatureVal"></ftui-chart-data>
+        </ftui-chart>
+      </ftui-page-section>
+      
+    </ftui-page>
   </ftui-tab-view>
 
 
