@@ -33,24 +33,27 @@
     <ftui-page>
 
       <ftui-page-section>
-        <ftui-dimmer title="BOGENLAMPE" min="0" max="99" [value]="Dimmer02:dimmerVal" (value)="set Dimmer02 dim $value"></ftui-dimmer>
-        <ftui-dimmer title="BODENLEISTE" [value]="HUEDevice10:dimmerVal" (value)="set HUEDevice10 pct $value"></ftui-dimmer>
+        <ftui-dimmer title="Bogenlampe" min="0" max="99" [value]="Dimmer02:dimmerVal" (value)="set Dimmer02 dim $value"></ftui-dimmer>
+        <ftui-dimmer title="Bodenleiste" [value]="HUEDevice10:dimmerVal" (value)="set HUEDevice10 pct $value"></ftui-dimmer>
       </ftui-page-section>
       <ftui-page-section>
-        <ftui-blind title="KÜCHENFENSTER" min="0" max="99" [value]="Blind04:positionVal" (value)="set Blind04 dim $value" up="set Blind04 on" down="set Blind04 off" stop="set Blind04 stop"></ftui-blind>
-        <ftui-blind title="SEITENFENSTER" min="0" max="99" [value]="Blind01:positionVal" (value)="set Blind01 dim $value" up="set Blind01 on" down="set Blind01 off" stop="set Blind01 stop"></ftui-blind>
+        <ftui-blind title="Küchenfenster" min="0" max="99" [value]="Blind04:positionVal" (value)="set Blind04 dim $value" up="set Blind04 on" down="set Blind04 off" stop="set Blind04 stop"></ftui-blind>
+        <ftui-blind title="Seitenfenster" min="0" max="99" [value]="Blind01:positionVal" (value)="set Blind01 dim $value" up="set Blind01 on" down="set Blind01 off" stop="set Blind01 stop"></ftui-blind>
       </ftui-page-section>
 
       <ftui-page-section>
-        <ftui-chart title="TEMPERATUR (GARTEN)" height="250px">
-          <ftui-chart-data label="TERASSE" point-radius="0" tension="0.3" fill border-color="#228ace" log="DbLog" file="history" spec="Thermometer02:temperatureVal"></ftui-chart-data>
+        <ftui-chart title="Temperatur (Garten)" height="250px">
+          <ftui-chart-data label="Terrasse" point-radius="0" tension="0.3" fill border-color="#228ace" log="DbLog" file="history" spec="Thermometer02:temperatureVal"></ftui-chart-data>
         </ftui-chart>
-        <ftui-chart title="TEMPERATUR (INNEN)" height="250px">
-          <ftui-chart-data label="WOHN" point-radius="0" tension="0.3" fill border-color="#8e44ad" log="DbLog" file="history" spec="Thermometer06:temperatureVal"></ftui-chart-data>
-          <ftui-chart-data label="LAURIN" point-radius="0" tension="0.3" fill border-color="#f1c40f" log="DbLog" file="history" spec="Thermometer05:temperatureVal"></ftui-chart-data>
-          <ftui-chart-data label="LENN" point-radius="0" tension="0.3" fill border-color="#d63056" log="DbLog" file="history" spec="Thermometer04:temperatureVal"></ftui-chart-data>
-          <ftui-chart-data label="SCHLAF" point-radius="0" tension="0.3" fill border-color="#228ace" log="DbLog" file="history" spec="Thermometer01:temperatureVal"></ftui-chart-data>
-          <ftui-chart-data label="BAD" point-radius="0" tension="0.3" fill border-color="#27ae60" log="DbLog" file="history" spec="Thermometer03:temperatureVal"></ftui-chart-data>
+      </ftui-page-section>
+
+      <ftui-page-section>
+        <ftui-chart title="Temperatur (Innen)" height="250px">
+          <ftui-chart-data label="Wohn" point-radius="0" tension="0.3" fill border-color="#8e44ad" log="DbLog" file="history" spec="Thermometer06:temperatureVal"></ftui-chart-data>
+          <ftui-chart-data label="Laurin" point-radius="0" tension="0.3" fill border-color="#f1c40f" log="DbLog" file="history" spec="Thermometer05:temperatureVal"></ftui-chart-data>
+          <ftui-chart-data label="Lenn" point-radius="0" tension="0.3" fill border-color="#d63056" log="DbLog" file="history" spec="Thermometer04:temperatureVal"></ftui-chart-data>
+          <ftui-chart-data label="Schlaf" point-radius="0" tension="0.3" fill border-color="#228ace" log="DbLog" file="history" spec="Thermometer01:temperatureVal"></ftui-chart-data>
+          <ftui-chart-data label="Bad" point-radius="0" tension="0.3" fill border-color="#27ae60" log="DbLog" file="history" spec="Thermometer03:temperatureVal"></ftui-chart-data>
           <ftui-chart-data label="WC" hidden point-radius="0" tension="0.3" fill border-color="#ECA209" log="DbLog" file="history" spec="Thermometer07:temperatureVal"></ftui-chart-data>
         </ftui-chart>
       </ftui-page-section>
