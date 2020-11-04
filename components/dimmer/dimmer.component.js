@@ -70,8 +70,8 @@ export class FtuiDimmer extends FtuiElement {
             <div id="label">${this.title}</div>
           </div>
           <div id="button-container">
-            <div id="button-on">ON</div>
-            <div id="button-off">OFF</div>
+            <div id="button-on">On</div>
+            <div id="button-off">Off</div>
           </div>
         </div>
         <div class="row">
