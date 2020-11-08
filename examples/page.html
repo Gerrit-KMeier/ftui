@@ -57,6 +57,12 @@
           <ftui-chart-data label="WC" hidden point-radius="0" tension="0.3" fill border-color="#ECA209" log="DbLog" file="history" spec="Thermometer07:temperatureVal"></ftui-chart-data>
         </ftui-chart>
       </ftui-page-section>
+
+      <ftui-page-section>
+        <ftui-chart title="Fußbodenheizung" height="250px" unit="day" units="hour, day">
+          <ftui-chart-data label="Wohnzimmer" point-radius="0" stepped="true" border-color="#8e44ad" log="DbLog" file="history" spec="Heizung:Heizkreis_Wohnzimmer"></ftui-chart-data>
+        </ftui-chart>
+      </ftui-page-section>
       
     </ftui-page>
   </ftui-tab-view>
