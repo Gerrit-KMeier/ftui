@@ -50,17 +50,17 @@
       <ftui-page-section>
         <ftui-chart title="Temperatur (Innen)" height="250px" unit="day" units="day, week">
           <ftui-chart-data label="Wohn" point-radius="0" tension="0.3" fill border-color="#8e44ad" log="DbLog" file="history" spec="Thermometer06:temperatureVal"></ftui-chart-data>
-          <ftui-chart-data label="Laurin" point-radius="0" tension="0.3" fill border-color="#f1c40f" log="DbLog" file="history" spec="Thermometer05:temperatureVal"></ftui-chart-data>
-          <ftui-chart-data label="Lenn" point-radius="0" tension="0.3" fill border-color="#d63056" log="DbLog" file="history" spec="Thermometer04:temperatureVal"></ftui-chart-data>
-          <ftui-chart-data label="Schlaf" point-radius="0" tension="0.3" fill border-color="#228ace" log="DbLog" file="history" spec="Thermometer01:temperatureVal"></ftui-chart-data>
-          <ftui-chart-data label="Bad" point-radius="0" tension="0.3" fill border-color="#27ae60" log="DbLog" file="history" spec="Thermometer03:temperatureVal"></ftui-chart-data>
-          <ftui-chart-data label="WC" hidden point-radius="0" tension="0.3" fill border-color="#ECA209" log="DbLog" file="history" spec="Thermometer07:temperatureVal"></ftui-chart-data>
+          <ftui-chart-data label="Laurin" extend point-radius="0" tension="0.3" fill border-color="#f1c40f" log="DbLog" file="history" spec="Thermometer05:temperatureVal"></ftui-chart-data>
+          <ftui-chart-data label="Lenn" extend point-radius="0" tension="0.3" fill border-color="#d63056" log="DbLog" file="history" spec="Thermometer04:temperatureVal"></ftui-chart-data>
+          <ftui-chart-data label="Schlaf" extend point-radius="0" tension="0.3" fill border-color="#228ace" log="DbLog" file="history" spec="Thermometer01:temperatureVal"></ftui-chart-data>
+          <ftui-chart-data label="Bad" extend point-radius="0" tension="0.3" fill border-color="#27ae60" log="DbLog" file="history" spec="Thermometer03:temperatureVal"></ftui-chart-data>
+          <ftui-chart-data label="WC" extend hidden point-radius="0" tension="0.3" fill border-color="#ECA209" log="DbLog" file="history" spec="Thermometer07:temperatureVal"></ftui-chart-data>
         </ftui-chart>
       </ftui-page-section>
 
       <ftui-page-section>
         <ftui-chart title="Fußbodenheizung" height="250px" unit="day" units="hour, day">
-          <ftui-chart-data label="Wohnzimmer" point-radius="0" stepped="true" border-color="#8e44ad" log="DbLog" file="history" spec="Heizung:Heizkreis_Wohnzimmer"></ftui-chart-data>
+          <ftui-chart-data label="Wohnzimmer" stepped extend point-radius="0" border-color="#8e44ad" log="DbLog" file="history" spec="Heizung:Heizkreis_Wohnzimmer"></ftui-chart-data>
         </ftui-chart>
       </ftui-page-section>
       
