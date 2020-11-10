@@ -133,6 +133,7 @@ export class FtuiBlind extends FtuiElement {
         this.rangeable.update();
         break;
       case 'value':
+        this.elementIcon.direction = 'normal';
         this.elementIcon.pause();
         this.elementIcon.animationPosition = 1.0 - (Number(newValue) / this.max);
         this.rangeable.setValue(Number(this.value));
@@ -158,13 +159,13 @@ export class FtuiBlind extends FtuiElement {
   }
   
   onButtonClick(sender) {
-    if (sender === this.elementButtonUp && this.up.length > 0) {
+    if (sender === this.elementButtonUp && this.up.length > 0 && this.value < this.max) {
       fhemService.updateFhem(this.up);
       this.elementIcon.direction = 'reverse';
       this.elementIcon.animate();
     } else if (sender === this.elementButtonStop && this.stop.length > 0) {
       fhemService.updateFhem(this.stop);
-    } else if (sender === this.elementButtonDown && this.down.length > 0) {
+    } else if (sender === this.elementButtonDown && this.down.length > 0 && this.value > this.min) {
       fhemService.updateFhem(this.down);
       this.elementIcon.direction = 'normal';
       this.elementIcon.animate();
