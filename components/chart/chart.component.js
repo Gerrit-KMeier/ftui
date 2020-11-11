@@ -10,7 +10,7 @@
 import { FtuiElement } from '../element.component.js';
 import { FtuiChartData } from './chart-data.component.js';
 import { Chart } from '../../modules/chart.js/chart.min.js';
-import { dateFormat, getStylePropertyValue } from '../../modules/ftui/ftui.helper.js';
+import { dateFormat, dateFromString, getStylePropertyValue } from '../../modules/ftui/ftui.helper.js';
 import '../../modules/chart.js/chartjs-adapter-date-fns.bundle.min.js';
 
 export class FtuiChart extends FtuiElement {
@@ -52,8 +52,9 @@ export class FtuiChart extends FtuiElement {
           x: {
             type: 'time',
             time: {
+              unit: this.timeUnit,
               parser: 'yyyy-MM-dd_HH:mm:ss',
-              displayFormats: { millisecond: 'HH:mm:ss.SSS', second: 'HH:mm:ss', minute: 'HH:mm', hour: 'HH:mm', day: 'd. MMM' }
+              displayFormats: { millisecond: 'HH:mm:ss.SSS', second: 'HH:mm:ss', minute: 'HH:mm', hour: 'HH:mm', day: 'd. MMM', month: 'MMM' }
             },
             gridLines: {
               color: getStylePropertyValue('--dark-color')
@@ -72,6 +73,8 @@ export class FtuiChart extends FtuiElement {
             scaleLabel: {
               labelString: 'value'
             },
+            min: (this.min.length) ? parseFloat(this.min) : undefined,
+            max: (this.max.length) ? parseFloat(this.max) : undefined,
             gridLines: {
               color: getStylePropertyValue('--dark-color')
             },
@@ -136,6 +139,8 @@ export class FtuiChart extends FtuiElement {
       type: 'line',
       width: '90%',
       height: '90%',
+      min: '',
+      max: '',
       unit: 'day',
       offset: 0,
       prefetch: 0,
@@ -202,8 +207,30 @@ export class FtuiChart extends FtuiElement {
     return dateFormat(date, 'YYYY-MM-DD_hh:mm:ss');
   }
 
-  onAttributeChanged(name) {
+  get timeUnit() {
+    var timeUnit;
 
+    switch (this.unit) {
+      case 'hour':
+        timeUnit = 'minute';
+        break;
+      case 'day':
+        timeUnit = 'hour';
+        break;
+      case 'week':
+        timeUnit = 'day';
+        break;
+      case 'month':
+        timeUnit = 'day';
+        break;
+      case 'year':
+        timeUnit = 'month';
+        break;
+    }
+    return timeUnit;
+  }
+
+  onAttributeChanged(name) {
     switch (name) {
       case 'title':
         this.configuration.options.title.text = this.title;
@@ -216,6 +243,7 @@ export class FtuiChart extends FtuiElement {
         break;
       case 'unit':
         this.offset = 0;
+        this.configuration.options.scales.x.time.unit = this.timeUnit;
         break;
       case 'offset':
         this.refresh();
@@ -247,9 +275,39 @@ export class FtuiChart extends FtuiElement {
     });
   }
 
+  // Bar Charts in Chart.js 3.0 Beta have a bug, not showing the correct time-range. This function acts as temporary fix.
+  fixBarEndDate(endDate) {
+    let fixedDate = dateFromString(endDate);
+
+    switch (this.unit) {
+      case 'hour':
+        fixedDate.setMinutes(fixedDate.getMinutes() - 1);
+        break;
+      case 'day':
+      case 'week':
+        fixedDate.setHours(fixedDate.getHours() - 1);
+        break;
+      case 'week':
+      case 'month':
+        fixedDate.setDate(fixedDate.getDate() - 1);
+        break;
+      case 'year':
+        fixedDate.setMonth(fixedDate.getMonth() - 1);
+        break;
+    }
+    return dateFormat(fixedDate, 'YYYY-MM-DD_hh:mm:ss');
+  }
+
   onDataChanged() {
     this.configuration.options.scales.x.min = this.startDate;
     this.configuration.options.scales.x.max = this.endDate;
+
+    // Bar Charts in Chart.js 3.0 Beta have a bug, not showing the correct time-range
+    // This if statement and the 'fixBarEndDate' function can be removed once this is fixed
+    if (this.type === 'bar') {
+      this.configuration.options.scales.x.max = this.fixBarEndDate(this.configuration.options.scales.x.max);
+    }
+
     this.configuration.data.datasets = [];
     this.dataElements.forEach(dataElement => {
       const dataset = {};
