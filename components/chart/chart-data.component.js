@@ -60,11 +60,11 @@ export class FtuiChartData extends FtuiElement {
   }
 
   fetchLogItems(log, file, spec) {
-    var startDate = ftuiHelper.dateFromString(this.startDate);
+    const startDate = ftuiHelper.dateFromString(this.startDate);
     startDate.setSeconds(startDate.getSeconds() - this.prefetch);
     const startDateFormatted = ftuiHelper.dateFormat(startDate, 'YYYY-MM-DD_hh:mm:ss');
 
-    var endDate = ftuiHelper.dateFromString(this.endDate);
+    const endDate = ftuiHelper.dateFromString(this.endDate);
     endDate.setSeconds(endDate.getSeconds() + this.prefetch);
     const endDateFormatted = ftuiHelper.dateFormat(endDate, 'YYYY-MM-DD_hh:mm:ss');
 
@@ -79,7 +79,7 @@ export class FtuiChartData extends FtuiElement {
 
   parseLogItems(response) {
     const data = [];
-    var date, value;
+    let date, value;
     const lines = response.split('\n');
 
     lines.forEach(line => {

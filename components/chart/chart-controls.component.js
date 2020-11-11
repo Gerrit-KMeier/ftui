@@ -1,3 +1,4 @@
+
 /*
 * Chart component for FTUI version 3
 *
@@ -23,9 +24,9 @@ export class FtuiChartControls extends FtuiElement {
     this.forwardElement.addEventListener('click', () => ftuiHelper.triggerEvent('ftuiForward', this));
 
     if (this.units) {
-      let units = String(this.units).split(/[;,:]/).map(item => item.toLowerCase().trim());
+      const units = String(this.units).split(/[;,:]/).map(item => item.toLowerCase().trim());
       units.forEach(unit => {
-        let element = this.shadowRoot.querySelector('#' + unit);
+        const element = this.shadowRoot.querySelector('#' + unit);
         element.classList.add('enabled');
         element.addEventListener('click', () => ftuiHelper.triggerEvent('ftuiUnit' + unit, this));
       });
@@ -35,12 +36,11 @@ export class FtuiChartControls extends FtuiElement {
   template() {
     return `
       <style> @import "components/chart/chart-controls.component.css"; </style>
-
       <div id="container">
         <div id="controls">
-          <span id='backward'>◀</span>
-          <span id='date'></span>
-          <span id='forward'>▶</span>
+          <span id="backward">◀</span>
+          <span id="date"></span>
+          <span id="forward">▶</span>
         </div>
         <div id="units">
           <span class="unit" id="year">Year</span>
@@ -73,11 +73,12 @@ export class FtuiChartControls extends FtuiElement {
       case 'day':
         dateString = ftuiHelper.dateFormat(ftuiHelper.dateFromString(this.startDate), 'ee DD.MM');
         break;
-      case 'week':
+      case 'week': {
         const endDate = ftuiHelper.dateFromString(this.endDate);
         endDate.setDate(endDate.getDate()-1);
         dateString = ftuiHelper.dateFormat(ftuiHelper.dateFromString(this.startDate), 'DD.MM') + ' - ' + ftuiHelper.dateFormat(endDate, 'DD.MM');
         break;
+      }
       case 'month':
         dateString = ftuiHelper.dateFormat(ftuiHelper.dateFromString(this.startDate), 'MM.YYYY');
         break;

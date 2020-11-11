@@ -9,7 +9,7 @@
 
 import { FtuiElement } from '../element.component.js';
 import { FtuiChartData } from './chart-data.component.js';
-import { Chart } from '../../modules/chart.js/chart.js';
+import { Chart } from '../../modules/chart.js/chart.min.js';
 import { dateFormat, getStylePropertyValue } from '../../modules/ftui/ftui.helper.js';
 import '../../modules/chart.js/chartjs-adapter-date-fns.bundle.min.js';
 
@@ -17,11 +17,6 @@ export class FtuiChart extends FtuiElement {
   constructor(properties) {
 
     super(Object.assign(FtuiChart.properties, properties));
-
-    this.dataElements = this.querySelectorAll('ftui-chart-data');
-    this.controlsElement = this.querySelector('ftui-chart-controls');
-    this.chartContainer = this.shadowRoot.querySelector('#container');
-    this.chartElement = this.shadowRoot.querySelector('#chart');
 
     this.configuration = {
       type: this.type,
@@ -99,28 +94,36 @@ export class FtuiChart extends FtuiElement {
       Chart.defaults.font.style = getStylePropertyValue('--chart-font-style')
     }
     Chart.defaults.font.color = getStylePropertyValue('--chart-text-color');
+
+    this.controlsElement = this.querySelector('ftui-chart-controls');
+    this.chartContainer = this.shadowRoot.querySelector('#container');
+    this.chartElement = this.shadowRoot.querySelector('#chart');
+
     this.chart = new Chart(this.chartElement, this.configuration);
 
+    this.dataElements = this.querySelectorAll('ftui-chart-data');
     this.dataElements.forEach(dataElement => dataElement.addEventListener('ftuiDataChanged', () => this.onDataChanged()));
-    this.controlsElement?.addEventListener('ftuiForward', () => this.offset +=1);
+    this.controlsElement?.addEventListener('ftuiForward', () => this.offset += 1);
     this.controlsElement?.addEventListener('ftuiBackward', () => this.offset -= 1);
-    
+
     ['hour', 'day', 'week', 'month', 'year'].forEach(unit => {
       this.controlsElement?.addEventListener('ftuiUnit' + unit, () => this.unit = unit);
     });
 
-    this.chartContainer.style.width = this.width;
-    this.chartContainer.style.height = this.height;
+    this.style.height = this.height;
+    this.style.width = this.width;
   }
 
   connectedCallback() {
-    this.refresh();
+    window.requestAnimationFrame(() => {
+      this.refresh();
+    })
+
   }
 
   template() {
     return `
       <style> @import "components/chart/chart.component.css"; </style>
-
       <div id="container">
         <canvas id="chart"></canvas>
       </div>
@@ -131,8 +134,8 @@ export class FtuiChart extends FtuiElement {
     return {
       title: '',
       type: 'line',
-      width: '100%',
-      height: 'auto',
+      width: '90%',
+      height: '90%',
       unit: 'day',
       offset: 0,
       prefetch: 0,
@@ -158,7 +161,7 @@ export class FtuiChart extends FtuiElement {
         break;
       case 'week':
         date.setHours(0, 0, 0, 0);
-        date.setDate((date.getDate() + this.offset*7) - (date.getDay()-1));
+        date.setDate((date.getDate() + this.offset * 7) - (date.getDay() - 1));
         break;
       case 'month':
         date.setHours(0, 0, 0, 0);
@@ -177,29 +180,30 @@ export class FtuiChart extends FtuiElement {
 
     switch (this.unit) {
       case 'hour':
-        date.setHours(date.getHours()+1 + this.offset, 0, 0, 0);
+        date.setHours(date.getHours() + 1 + this.offset, 0, 0, 0);
         break;
       case 'day':
-        date.setDate(date.getDate()+1 + this.offset);
+        date.setDate(date.getDate() + 1 + this.offset);
         date.setHours(0, 0, 0, 0);
         break;
       case 'week':
         date.setHours(0, 0, 0, 0);
-        date.setDate((date.getDate()+7 + this.offset*7) - (date.getDay()-1));
+        date.setDate((date.getDate() + 7 + this.offset * 7) - (date.getDay() - 1));
         break;
       case 'month':
         date.setHours(0, 0, 0, 0);
-        date.setMonth(date.getMonth()+1 + this.offset, 1);
+        date.setMonth(date.getMonth() + 1 + this.offset, 1);
         break;
       case 'year':
         date.setHours(0, 0, 0, 0);
-        date.setFullYear(date.getFullYear()+1 + this.offset, 0, 1);
+        date.setFullYear(date.getFullYear() + 1 + this.offset, 0, 1);
         break;
     }
     return dateFormat(date, 'YYYY-MM-DD_hh:mm:ss');
   }
 
   onAttributeChanged(name) {
+
     switch (name) {
       case 'title':
         this.configuration.options.title.text = this.title;
@@ -216,10 +220,17 @@ export class FtuiChart extends FtuiElement {
       case 'offset':
         this.refresh();
         break;
+      case 'height':
+        this.style.height = this.height;
+        break;
+      case 'width':
+        this.style.width = this.width;
+        break;
     }
   }
 
   refresh() {
+    console.log('refresh', this.id)
     if (this.controlsElement) {
       this.controlsElement.unit = this.unit;
       this.controlsElement.startDate = this.startDate;
