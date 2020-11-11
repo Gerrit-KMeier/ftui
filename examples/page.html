@@ -42,14 +42,14 @@
       </ftui-page-section>
 
       <ftui-page-section>
-        <ftui-chart title="Temperatur (Garten)" height="250px" unit="day" prefetch="21600" extend>
+        <ftui-chart title="Temperatur (Garten)" height="250px" width="100%" unit="day" prefetch="21600" extend>
           <ftui-chart-data label="Terrasse" point-radius="0" tension="0.3" fill border-color="#228ace" log="DbLog" file="history" spec="Thermometer02:temperatureVal"></ftui-chart-data>
           <ftui-chart-controls units="day, week"></ftui-chart-controls>
         </ftui-chart>
       </ftui-page-section>
 
       <ftui-page-section>
-        <ftui-chart title="Temperatur (Innen)" height="250px" unit="day" prefetch="21600" extend>
+        <ftui-chart title="Temperatur (Innen)" height="250px" width="100%" unit="day" prefetch="21600" extend>
           <ftui-chart-data label="Wohn" point-radius="0" tension="0.3" fill border-color="#8e44ad" log="DbLog" file="history" spec="Thermometer06:temperatureVal"></ftui-chart-data>
           <ftui-chart-data label="Laurin" point-radius="0" tension="0.3" fill border-color="#f1c40f" log="DbLog" file="history" spec="Thermometer05:temperatureVal"></ftui-chart-data>
           <ftui-chart-data label="Lenn" point-radius="0" tension="0.3" fill border-color="#d63056" log="DbLog" file="history" spec="Thermometer04:temperatureVal"></ftui-chart-data>
@@ -61,13 +61,24 @@
       </ftui-page-section>
 
       <ftui-page-section>
-        <ftui-chart title="Fußbodenheizung" height="250px" unit="day" prefetch="86400" extend noscale>
-          <ftui-chart-data label="Wohn" stepped extend offset="0.0" point-radius="0" border-color="#8e44ad" log="DbLog" file="history" spec="Heizung:Heizkreis_Wohnzimmer"></ftui-chart-data>
-          <ftui-chart-data label="Laurin" stepped extend offset="1.5" point-radius="0" border-color="#f1c40f" log="DbLog" file="history" spec="Heizung:Heizkreis_Kind1"></ftui-chart-data>
-          <ftui-chart-data label="Lenn" stepped extend offset="3.0" point-radius="0" border-color="#d63056" log="DbLog" file="history" spec="Heizung:Heizkreis_Kind2"></ftui-chart-data>
-          <ftui-chart-data label="Schlaf" stepped extend offset="4.5" point-radius="0" border-color="#228ace" log="DbLog" file="history" spec="Heizung:Heizkreis_Schlafzimmer"></ftui-chart-data>
-          <ftui-chart-data label="Bad" stepped extend offset="6.0" point-radius="0" border-color="#27ae60" log="DbLog" file="history" spec="Heizung:Heizkreis_Bad"></ftui-chart-data>
+        <ftui-chart title="Fußbodenheizung (Ventilstellung)" height="250px" width="100%" unit="day" prefetch="86400" extend noscale>
+          <ftui-chart-data label="Wohn" stepped offset="0.0" point-radius="0" border-color="#8e44ad" log="DbLog" file="history" spec="Heizung:Heizkreis_Wohnzimmer"></ftui-chart-data>
+          <ftui-chart-data label="Laurin" stepped offset="1.5" point-radius="0" border-color="#f1c40f" log="DbLog" file="history" spec="Heizung:Heizkreis_Kind1"></ftui-chart-data>
+          <ftui-chart-data label="Lenn" stepped offset="3.0" point-radius="0" border-color="#d63056" log="DbLog" file="history" spec="Heizung:Heizkreis_Kind2"></ftui-chart-data>
+          <ftui-chart-data label="Schlaf" stepped offset="4.5" point-radius="0" border-color="#228ace" log="DbLog" file="history" spec="Heizung:Heizkreis_Schlafzimmer"></ftui-chart-data>
+          <ftui-chart-data label="Bad" stepped offset="6.0" point-radius="0" border-color="#27ae60" log="DbLog" file="history" spec="Heizung:Heizkreis_Bad"></ftui-chart-data>
           <ftui-chart-controls units="hour, day"></ftui-chart-controls>
+        </ftui-chart>
+      </ftui-page-section>
+
+      <ftui-page-section>
+        <ftui-chart title="Fußbodenheizung (Heizdauer pro Tag)" height="250px" width="100%" type="bar" unit="week" min="0" max="24">
+          <ftui-chart-data label="Wohn" offset="0.0" point-radius="0" border-width="0" background-color="#8e44ad" log="logProxy" file="-" spec="DbLog:DbLog,postFn='hoursFromDurationStringArray':Heizung:statHeizkreis_WohnzimmerDay1Last"></ftui-chart-data>
+          <ftui-chart-data label="Laurin" offset="0.0" point-radius="0" border-width="0" background-color="#f1c40f" log="logProxy" file="-" spec="DbLog:DbLog,postFn='hoursFromDurationStringArray':Heizung:statHeizkreis_Kind1Day1Last"></ftui-chart-data>
+          <ftui-chart-data label="Lenn" offset="0.0" point-radius="0" border-width="0" background-color="#d63056" log="logProxy" file="-" spec="DbLog:DbLog,postFn='hoursFromDurationStringArray':Heizung:statHeizkreis_Kind2Day1Last"></ftui-chart-data>
+          <ftui-chart-data label="Schlaf" offset="0.0" point-radius="0" border-width="0" background-color="#228ace" log="logProxy" file="-" spec="DbLog:DbLog,postFn='hoursFromDurationStringArray':Heizung:statHeizkreis_SchlafzimmerDay1Last"></ftui-chart-data>
+          <ftui-chart-data label="Bad" offset="0.0" point-radius="0" border-width="0" background-color="#27ae60" log="logProxy" file="-" spec="DbLog:DbLog,postFn='hoursFromDurationStringArray':Heizung:statHeizkreis_BadDay1Last"></ftui-chart-data>
+          <ftui-chart-controls units="week, month"></ftui-chart-controls>
         </ftui-chart>
       </ftui-page-section>
       
