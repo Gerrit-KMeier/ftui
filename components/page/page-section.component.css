@@ -3,10 +3,19 @@
   width: 100%;
   padding: 20px 0px;
   background-color: var(--grid-background-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 :host ::slotted(header) {
   color: var(--grid-header-color);
   background: var(--grid-header-background-color);
+}
+
+:host ::slotted(ftui-chart) {
+  width: 100%;
+  height: 100%;
 }
 

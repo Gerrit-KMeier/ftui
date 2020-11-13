@@ -10,7 +10,7 @@
   --gray10: #191B24;
   --gray15: #1f212c;
   --gray20: #262836;
-  --gray25: #2b2d3c;
+  --gray25: #303242;
   --gray33: #5f6373;
   --gray40: #6f7383;
   --gray55: #999db0;
@@ -47,7 +47,7 @@
   --warning-color: var(--yellow1);
   --danger-color: var(--red1);
   --light-color: var(--gray75);
-  --medium-color: var(--gray40);
+  --medium-color: var(--gray33);
   --dark-color: var(--gray25);
 
   --primary-contrast-color: var(--white);

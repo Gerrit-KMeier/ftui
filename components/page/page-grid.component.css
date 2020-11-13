@@ -1,0 +1,13 @@
+:host {
+  --page-grid-min-width: var(--page-grid-default-min-width, 200px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--page-grid-min-width), 1fr));
+  grid-gap: 20px;
+  padding: 0 20px;
+  width: 100%;
+}
+
+:host ::slotted(ftui-button) {
+  height: 70px;
+  font-size: 1em;
+}
