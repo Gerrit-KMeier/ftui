@@ -14,21 +14,16 @@
 */
 
 import { FtuiElement } from '../element.component.js';
-import { FtuiPageSection } from './page-section.component.js';
 
-class FtuiPage extends FtuiElement {
+export class FtuiPage extends FtuiElement {
 
-  constructor() {
-    const properties = {
-      pages: 0
-    };
+  constructor(properties) {
     super(properties);
   }
 
   template() {
     return `<style> @import "components/page/page.component.css"; </style>
-    <slot></slot>
-        `;
+    <slot></slot>`;
   }
 }
 

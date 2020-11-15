@@ -17,10 +17,7 @@ import { FtuiElement } from '../element.component.js';
 
 export class FtuiPageSection extends FtuiElement {
 
-  constructor() {
-    const properties = {
-      
-    };
+  constructor(properties) {
     super(properties);
   }
   

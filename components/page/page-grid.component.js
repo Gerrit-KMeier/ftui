@@ -17,11 +17,34 @@ import { FtuiElement } from '../element.component.js';
 
 export class FtuiPageGrid extends FtuiElement {
 
-  constructor() {
-    const properties = {
-      
+  constructor(properties) {
+    super(Object.assign(FtuiPageGrid.properties, properties));
+  }
+
+  static get properties() {
+    return {
+      minWidth: '150',
+      gap: 20,
+      padding: 20
     };
-    super(properties);
+  }
+
+  static get observedAttributes() {
+    return [...this.convertToAttributes(FtuiPageGrid.properties), ...super.observedAttributes];
+  }
+
+  onAttributeChanged(name) {
+    switch (name) {
+      case 'min-width':
+        this.style.gridTemplateColumns = 'repeat(auto-fit, minmax(' + this.minWidth + 'px , 1fr))';
+        break;
+      case 'gap':
+        this.style.gridGap = this.gap + 'px';
+        break;
+      case 'padding':
+        this.style.padding = '0 ' + this.padding + 'px';
+        break;
+    }
   }
   
   template() {
