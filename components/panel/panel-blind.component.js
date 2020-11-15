@@ -1,5 +1,5 @@
 /*
-* Blind component
+* Blind Panel
 *
 * Copyright (c) 2019-2020 Tobias Wiedenmann <thyraz@gmail.com>
 * Under MIT License (http://www.opensource.org/licenses/mit-license.php)
@@ -19,10 +19,10 @@ import { Rangeable } from '../../modules/rangeable/rangeable.min.js';
 import { isVisible } from '../../modules/ftui/ftui.helper.js';
 import { fhemService } from '../../modules/ftui/fhem.service.js';
 
-export class FtuiBlind extends FtuiElement {
+export class FtuiPanelBlind extends FtuiElement {
 
   constructor(properties) {
-    super(Object.assign(FtuiBlind.properties, properties));
+    super(Object.assign(FtuiPanelBlind.properties, properties));
 
     this.input = this.shadowRoot.querySelector('input');
     this.elementIcon = this.shadowRoot.querySelector('#icon');
@@ -61,7 +61,7 @@ export class FtuiBlind extends FtuiElement {
   template() {
     return `
     <style> @import "modules/rangeable/rangeable.min.css"; </style>
-    <style> @import "components/blind/blind.component.css"; </style>
+    <style> @import "components/panel/panel-blind.component.css"; </style>
 
     <div class="row" id="container">
       <div id="icon-container">
@@ -116,7 +116,7 @@ export class FtuiBlind extends FtuiElement {
   }
 
   static get observedAttributes() {
-    return [...this.convertToAttributes(FtuiBlind.properties), ...super.observedAttributes];
+    return [...this.convertToAttributes(FtuiPanelBlind.properties), ...super.observedAttributes];
   }
 
   onAttributeChanged(name, oldValue, newValue) {
@@ -173,4 +173,4 @@ export class FtuiBlind extends FtuiElement {
   }
 }
 
-window.customElements.define('ftui-blind', FtuiBlind);
+window.customElements.define('ftui-panel-blind', FtuiPanelBlind);

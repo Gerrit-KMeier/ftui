@@ -33,13 +33,13 @@
     <ftui-page>
 
       <ftui-page-section>
-        <ftui-dimmer title="Bogenlampe" min="0" max="99" [value]="Dimmer02:dimmerVal" (value)="set Dimmer02 dim $value"></ftui-dimmer>
-        <ftui-dimmer title="Bodenleiste" [value]="HUEDevice10:dimmerVal" (value)="set HUEDevice10 pct $value"></ftui-dimmer>
+        <ftui-panel-dimmer title="Bogenlampe" min="0" max="99" [value]="Dimmer02:dimmerVal" (value)="set Dimmer02 dim $value"></ftui-panel-dimmer>
+        <ftui-panel-dimmer title="Bodenleiste" [value]="HUEDevice10:dimmerVal" (value)="set HUEDevice10 pct $value"></ftui-panel-dimmer>
       </ftui-page-section>
 
       <ftui-page-section>
-        <ftui-blind title="Küchenfenster" min="0" max="99" [value]="Blind04:positionVal" (value)="set Blind04 dim $value" up="set Blind04 on" down="set Blind04 off" stop="set Blind04 stop"></ftui-blind>
-        <ftui-blind title="Seitenfenster" min="0" max="99" [value]="Blind01:positionVal" (value)="set Blind01 dim $value" up="set Blind01 on" down="set Blind01 off" stop="set Blind01 stop"></ftui-blind>
+        <ftui-panel-blind title="Küchenfenster" min="0" max="99" [value]="Blind04:positionVal" (value)="set Blind04 dim $value" up="set Blind04 on" down="set Blind04 off" stop="set Blind04 stop"></ftui-panel-blind>
+        <ftui-panel-blind title="Seitenfenster" min="0" max="99" [value]="Blind01:positionVal" (value)="set Blind01 dim $value" up="set Blind01 on" down="set Blind01 off" stop="set Blind01 stop"></ftui-panel-blind>
       </ftui-page-section>
 
       <ftui-page-section>

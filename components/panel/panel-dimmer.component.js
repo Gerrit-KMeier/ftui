@@ -1,5 +1,5 @@
 /*
-* Dimmer component
+* Dimmer Panel
 *
 * Copyright (c) 2019-2020 Tobias Wiedenmann <thyraz@gmail.com>
 * Under MIT License (http://www.opensource.org/licenses/mit-license.php)
@@ -18,10 +18,10 @@ import { FtuiIconMulticolor } from '../icon/icon-multicolor.component.js';
 import { Rangeable } from '../../modules/rangeable/rangeable.min.js';
 import { isVisible } from '../../modules/ftui/ftui.helper.js';
 
-export class FtuiDimmer extends FtuiElement {
+export class FtuiPanelDimmer extends FtuiElement {
   
   constructor(properties) {
-    super(Object.assign(FtuiDimmer.properties, properties));
+    super(Object.assign(FtuiPanelDimmer.properties, properties));
 
     this.input = this.shadowRoot.querySelector('input');
     this.elementIcon = this.shadowRoot.querySelector('#icon');
@@ -58,7 +58,7 @@ export class FtuiDimmer extends FtuiElement {
   template() {
     return `
     <style> @import "modules/rangeable/rangeable.min.css"; </style>
-    <style> @import "components/dimmer/dimmer.component.css"; </style>
+    <style> @import "components/panel/panel-dimmer.component.css"; </style>
 
     <div class="row" id="container">
       <div id="icon-container">
@@ -103,7 +103,7 @@ export class FtuiDimmer extends FtuiElement {
   }
 
   static get observedAttributes() {
-    return [...this.convertToAttributes(FtuiDimmer.properties), ...super.observedAttributes];
+    return [...this.convertToAttributes(FtuiPanelDimmer.properties), ...super.observedAttributes];
   }
 
   onAttributeChanged(name, oldValue, newValue) {
@@ -157,4 +157,4 @@ export class FtuiDimmer extends FtuiElement {
   }
 }
 
-window.customElements.define('ftui-dimmer', FtuiDimmer);
+window.customElements.define('ftui-panel-dimmer', FtuiPanelDimmer);

@@ -20,7 +20,7 @@
   <link href="themes/indigo-theme.css" rel="stylesheet">
   <link href="favicon.ico" rel="icon" type="image/x-icon" />
 
-  <title>FTUI Example Blind</title>
+  <title>FTUI Example Blind Panel</title>
 </head>
 
 <body>
@@ -28,9 +28,9 @@
     <ftui-grid-tile row="1" col="1" height="1" width="1">
       <header>Wohnzimmer</header>
 
-        <ftui-blind title="Wohnzimmerfenster" [value]="Blind02:positionVal" min="0" max="99" (value)="set Blind02 dim $value"></ftui-blind>
-        <ftui-blind title="Küchenfenster" [value]="Blind04:positionVal" min="0" max="99" (value)="set Blind04 dim $value"></ftui-blind>
-        <ftui-blind title="Terrassentür" [value]="Blind03:positionVal" min="0" max="99" (value)="set Blind03 dim $value"></ftui-blind>
+        <ftui-panel-blind title="Wohnzimmerfenster" [value]="Blind02:positionVal" min="0" max="99" (value)="set Blind02 dim $value"></ftui-panel-blind>
+        <ftui-panel-blind title="Küchenfenster" [value]="Blind04:positionVal" min="0" max="99" (value)="set Blind04 dim $value"></ftui-panel-blind>
+        <ftui-panel-blind title="Terrassentür" [value]="Blind03:positionVal" min="0" max="99" (value)="set Blind03 dim $value"></ftui-panel-blind>
 
     </ftui-grid-tile>
   </ftui-grid>
