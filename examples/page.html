@@ -33,6 +33,13 @@
     <ftui-page>
 
       <ftui-page-section>
+        <ftui-calendar view="listWeek">
+          <ftui-calendar-data calendar="Calendar"></ftui-calendar-data>
+          <ftui-calendar-data calendar="Abfall"></ftui-calendar-data>
+        </ftui-calendar>
+      </ftui-page-section>
+
+      <ftui-page-section>
         <ftui-panel-dimmer title="Bogenlampe" min="0" max="99" [value]="Dimmer02:dimmerVal" (value)="set Dimmer02 dim $value"></ftui-panel-dimmer>
         <ftui-panel-dimmer title="Bodenleiste" [value]="HUEDevice10:dimmerVal" (value)="set HUEDevice10 pct $value"></ftui-panel-dimmer>
       </ftui-page-section>
