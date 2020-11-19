@@ -2,6 +2,7 @@
   width: 90%;
   height: 90%;
   font-size: var(--calendar-font-size, inherit);
+  --color-base: initial;
 }
 
 #calendar {
