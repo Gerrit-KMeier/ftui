@@ -25,10 +25,9 @@ export class FtuiCalendarData extends FtuiElement {
   }
 
   static get properties() {
-    const primaryColor = ftuiHelper.getStylePropertyValue('--primary-color');
     return {
       calendar: '',
-      color: 'blue'
+      color: ''
     };
   }
 
@@ -62,6 +61,8 @@ export class FtuiCalendarData extends FtuiElement {
         data.push({ id, title, allDay, start, end, extendedProps: { location, description, category, duration } });
       }
     });
+
+    this.dataColor = ftuiHelper.getStylePropertyValue('--color-base', this) || this.color;
 
     return data;
   }

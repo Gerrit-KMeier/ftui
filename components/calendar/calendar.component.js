@@ -42,16 +42,11 @@ export class FtuiCalendar extends FtuiElement {
         }
       },
       eventDidMount: arg => {
-        // // Swap columns
-        // // const date = arg.el.querySelector('');
-        // // const graphic = arg.el.querySelector('');
-        // // const title = arg.el.querySelector('');
         const [date, graphic, title] = arg.el.childNodes;
-        // arg.el.insertBefore(graphic, date);
 
         if (arg.event.allDay) {
           let titleContent = title.querySelector('a');
-          titleContent.style.backgroundColor= 'var(--blue)';
+          titleContent.style.backgroundColor= arg.backgroundColor;
           titleContent.style.padding = '2px 10px';
           titleContent.style.borderRadius = '5px';
           graphic.style.display = 'none';
@@ -71,7 +66,6 @@ export class FtuiCalendar extends FtuiElement {
 
     this.calendarElement = this.shadowRoot.querySelector('#calendar');
     this.calendar = new FullCalendar.Calendar(this.calendarElement, this.configuration);
-    this.calendar.render();
 
     this.dataElements = this.querySelectorAll('ftui-calendar-data');
     this.dataElements.forEach(dataElement => dataElement.addEventListener('ftuiDataChanged', () => this.onDataChanged()));
@@ -79,6 +73,7 @@ export class FtuiCalendar extends FtuiElement {
 
   connectedCallback() {
     window.requestAnimationFrame(() => {
+      this.calendar.render();
       this.refresh();
     })
   }
@@ -87,13 +82,15 @@ export class FtuiCalendar extends FtuiElement {
     return `
       <style> @import "modules/fullcalendar/main.min.css"; </style>
       <style> @import "components/calendar/calendar.component.css"; </style>
-      <div id="calendar"></div>`;
+      <div id="calendar"></div>
+      <slot></slot>`;
   }
 
   static get properties() {
     return {
       height: 'auto',
-      view: 'listWeek'
+      view: 'listWeek',
+      noHeader: false
     };
   }
 
@@ -109,6 +106,9 @@ export class FtuiCalendar extends FtuiElement {
         break;
       case 'view':
         this.calendar.changeView(this.view);
+        break;
+      case 'no-header':
+        this.calendar.setOption('headerToolbar', (this.noHeader) ? false : this.configuration.headerToolbar);
         break;
     }
   }
@@ -129,7 +129,7 @@ export class FtuiCalendar extends FtuiElement {
 
     this.dataElements.forEach(dataElement => {
       const source = {
-        // color: dataElement.color,
+        color: dataElement.dataColor,
         events: dataElement.data
       };
       this.sources.push(source);
@@ -142,7 +142,9 @@ export class FtuiCalendar extends FtuiElement {
     const year = tokens.pop();
     const rest = tokens.join(' ');
     const title = calendar.el.querySelector('.fc-toolbar-title');
-    title.innerHTML = '<span id="#title-rest">' + rest + '</span> <span id="title-year">' + year + '</span>';
+    if (title) {
+      title.innerHTML = '<span id="#title-rest">' + rest + '</span> <span id="title-year">' + year + '</span>';
+    }
   }
 
 }

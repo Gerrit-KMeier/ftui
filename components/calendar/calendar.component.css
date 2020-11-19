@@ -1,6 +1,7 @@
 :host {
   width: 90%;
   height: 90%;
+  font-size: var(--calendar-font-size, inherit);
 }
 
 #calendar {
@@ -41,6 +42,10 @@
 .fc .fc-list-day-cushion {
   padding-top: 12px;
   padding-bottom: 4px;
+}
+
+.fc .fc-list-day-cushion, .fc .fc-list-table td {
+    padding: 0.5em 0.9em;
 }
 
 .fc .fc-list-table .fc-list-event td.fc-list-event-time {
