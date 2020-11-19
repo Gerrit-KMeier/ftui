@@ -17,7 +17,7 @@
   <base href="../" />
   <script src="ftui.js"></script>
   <link href="ftui.css" rel="stylesheet">
-  <link href="themes/indigo-theme.css" rel="stylesheet">
+  <link href="themes/ftui-theme.css" rel="stylesheet">
   <link href="favicon.ico" rel="icon" type="image/x-icon" />
 
   <title>FTUI Example Calendar</title>
@@ -28,7 +28,10 @@
     <ftui-grid-tile row="1" col="1" height="1" width="1">
       <header>Calendar</header>
 
-      <ftui-calendar></ftui-calendar>  
+      <ftui-calendar view="listWeek" height="500px">
+        <ftui-calendar-data calendar="Calendar" color="primary"></ftui-calendar-data>
+        <ftui-calendar-data calendar="Abfall" color="brown"></ftui-calendar-data>
+      </ftui-calendar> 
 
     </ftui-grid-tile>
   </ftui-grid>
