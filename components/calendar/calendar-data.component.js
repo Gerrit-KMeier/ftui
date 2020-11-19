@@ -40,7 +40,7 @@ export class FtuiCalendarData extends FtuiElement {
   }
 
   fetchEvents(calendar) {
-    const cmd = 'get ' + calendar + ' events format:custom="$U|$T1|$T2|$S|$L|$DS|$CA|$d" timeFormat:"%Y-%m-%dT%H:%M:%S"';
+    const cmd = 'get ' + calendar + ' events format:custom="$U|$T1|$T2|$S|$L|$DS|$CA|$d" timeFormat:"%Y-%m-%dT%H:%M:%S" limit:from=-31d,to=+31d';
     fhemService.sendCommand(cmd)
       .then(response => response.text())
       .then((response) => {
