@@ -73,10 +73,8 @@ export class FtuiCalendar extends FtuiElement {
   }
 
   connectedCallback() {
-    window.requestAnimationFrame(() => {
-      this.calendar.render();
-      this.refresh();
-    })
+    this.calendar.render();
+    this.refresh();
   }
 
   template() {
