@@ -55,7 +55,8 @@ export class FtuiCalendar extends FtuiElement {
           title.colSpan = 3;
         }
 
-        if (arg.isPast) {
+        const now = new Date();
+        if (now.getTime() > arg.event.end.getTime()) {
           arg.el.classList.add('isPast');
         }
       },
