@@ -46,13 +46,13 @@ export class FtuiIconMulticolor extends FtuiIcon {
 
   set animationPosition(position) {
     const paused = (this.animations?.[0]?.playState === 'paused');
-    position = (position == 1) ? 0.999 : position; // currentTime equal to the end of the animation will reset the animaton
+    position = (position == 100) ? 99 : position; // currentTime equal to the end of the animation will reset the animaton
     this.animations.forEach(animation => {
       if (!paused) {
         animation.play();
         animation.pause();
       } 
-      animation.currentTime = position * this.duration * 1000;
+      animation.currentTime = (position / 100) * this.duration * 1000;
     });
   }
 
@@ -72,7 +72,7 @@ export class FtuiIconMulticolor extends FtuiIcon {
       direction: 'normal',      // normal, reverse, alternate, alternate-reverse
       autoplay: 1,              // start animation automatically when the icon changed
       trigger: 0,               // events with values that are mapped to '1' start the animation (best used with autoplay 0)
-      progress: 0               // jumps to a specific animation frame when no animation is running (best used with autoplay 0). From 0.0 to 1.0
+      progress: 0               // jumps to a specific animation frame when no animation is running (best used with autoplay 0). From 0 to 100
     };
   }
 

@@ -60,7 +60,7 @@
         <ftui-icon-multicolor name="blind" [trigger]="Dummy01:state | map('`.*`: 0, moving: 1')" direction="alternate" iterations="2" autoplay="0"></ftui-icon-multicolor>
 
         <!-- No animation running, currently displayed keyframe controlled by Fhem -->
-        <ftui-icon-multicolor name="blind" autoplay="0" [progress]="Dummy01:positionNormalized"></ftui-icon-multicolor>
+        <ftui-icon-multicolor name="blind" autoplay="0" [progress]="Blind04:positionVal | scale(99,0,0,100)"></ftui-icon-multicolor>
 
         <!-- 2 icons for different device states, animation running once when icon changes -->
         <ftui-icon-multicolor [name]="HUEDevice10:pct | map('0: bulb_off, 1: bulb_on')" iterations="1"></ftui-icon-multicolor>
