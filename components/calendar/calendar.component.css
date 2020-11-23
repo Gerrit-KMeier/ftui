@@ -16,7 +16,7 @@
 }
 
 .fc .fc-toolbar-title {
-  font-size: 2em;
+  font-size: var(--calendar-title-font-size, 2em);
   font-weight: 500;
 }
 
