@@ -47,8 +47,8 @@ export class FtuiCalendar extends FtuiElement {
         if (arg.event.allDay) {
           let titleContent = title.querySelector('a');
           titleContent.style.backgroundColor= arg.backgroundColor;
-          titleContent.style.padding = '2px 10px';
-          titleContent.style.borderRadius = '5px';
+          titleContent.style.padding = '0.1em 0.6em';
+          titleContent.style.borderRadius = '0.3em';
           graphic.style.display = 'none';
           date.style.display = 'none';
           title.style.paddingLeft = '25px';
