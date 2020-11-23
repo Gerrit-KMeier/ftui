@@ -15,6 +15,8 @@
   --fc-list-event-hover-bg-color: transparent;
 }
 
+
+
 .fc .fc-toolbar-title {
   font-size: var(--calendar-title-font-size, 2em);
   font-weight: 500;
@@ -55,13 +57,30 @@
   opacity: 0.9;
 }
 
-.fc-direction-ltr .fc-list-day-side-text, .fc-direction-rtl .fc-list-day-text {
+.fc-direction-ltr .fc-list-day-side-text,
+.fc-direction-rtl .fc-list-day-text {
   float: left;
   padding-left: 10px;
 }
 
-.fc-direction-ltr .fc-list-day-text, .fc-direction-rtl .fc-list-day-side-text {
+.fc-direction-ltr .fc-list-day-text, 
+.fc-direction-rtl .fc-list-day-side-text {
   color: var(--white);
+}
+
+/* All-Day style in list view */
+.fc .fc-list-table .fc-list-event.allday .fc-list-event-time, 
+.fc .fc-list-table .fc-list-event.allday .fc-list-event-graphic {
+  display: none;
+}
+
+.fc .fc-list-table .fc-list-event.allday .fc-list-event-title {
+  padding-left: 25px;
+}
+
+.fc .fc-list-table .fc-list-event.allday .fc-list-event-title a {
+  padding : 0.1em 0.6em;
+  border-radius: 0.3em;
 }
 
 /* Disable sticky scrolling headers */

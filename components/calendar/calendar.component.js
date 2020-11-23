@@ -42,17 +42,12 @@ export class FtuiCalendar extends FtuiElement {
         }
       },
       eventDidMount: arg => {
-        const [date, graphic, title] = arg.el.childNodes;
-
         if (arg.event.allDay) {
+          arg.el.classList.add('allday')
+          const title = arg.el.querySelector('.fc-list-event-title');
+          title.colSpan = 3;
           let titleContent = title.querySelector('a');
           titleContent.style.backgroundColor= arg.backgroundColor;
-          titleContent.style.padding = '0.1em 0.6em';
-          titleContent.style.borderRadius = '0.3em';
-          graphic.style.display = 'none';
-          date.style.display = 'none';
-          title.style.paddingLeft = '25px';
-          title.colSpan = 3;
         }
 
         const now = new Date();
