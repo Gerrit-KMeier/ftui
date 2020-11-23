@@ -62,12 +62,15 @@
   --medium-contrast-color: var(--white);
   --dark-contrast-color: var(--white);
 
-  --header-color: var(--gray10);
-  --content-color: var(--gray20);
-  --footer-color: var(--gray10);
   --text-color: var(--white);
   --inactive-text-color: #A39B9B;
 
+  --view-header-color: var(--gray10);
+  --view-header-background-color: var(--gray20);
+  --view-content-color: var(--gray20);
+  --view-background-color: var(--gray20);
+  --view-footer-color: var(--gray10);
+  
   --page-background-color: var(--gray15);
 
   --grid-background-color: var(--gray20);
@@ -81,6 +84,8 @@
   --chart-text-color: var(--gray33);
 
   --border-color: var(--gray10);
+
+  --checkbox-off-color: var(--gray80);
 
   /* Theme specific variables */
 
@@ -120,7 +125,8 @@ footer {
 }
 
 .footer-container {
-  height: var(--footer-height);
+  height: 100%;
+  font-size: 13px;
 }
 
 ftui-grid-tile header {
