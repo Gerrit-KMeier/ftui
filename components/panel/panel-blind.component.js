@@ -135,7 +135,7 @@ export class FtuiPanelBlind extends FtuiElement {
       case 'value':
         this.elementIcon.direction = 'normal';
         this.elementIcon.pause();
-        this.elementIcon.animationPosition = 1.0 - (Number(newValue) / this.max);
+        this.elementIcon.animationPosition = (1.0 - (Number(newValue) / this.max)) * 100;
         this.rangeable.setValue(Number(this.value));
         this.rangeable.update();
         break;
