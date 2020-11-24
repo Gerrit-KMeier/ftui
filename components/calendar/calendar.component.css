@@ -17,6 +17,7 @@
 
 
 
+/* Toolbar */
 .fc .fc-toolbar-title {
   font-size: var(--calendar-title-font-size, 2em);
   font-weight: 500;
@@ -24,10 +25,6 @@
 
 .fc .fc-toolbar.fc-header-toolbar {
   margin-bottom: 0.5em;
-}
-
-#title-rest {
-  color: var(--white);
 }
 
 #title-year {
@@ -38,6 +35,7 @@
   font-weight: 500;
 }
 
+/* List View */
 .fc-list-day {
   color: var(--medium-color);
 }
@@ -45,10 +43,12 @@
 .fc .fc-list-day-cushion {
   padding-top: 0.75em;
   padding-bottom: 0.25em;
+  padding-left: 0.9em;
+  padding-right: 0.9em;
 }
 
 .fc .fc-list-table td {
-    padding: 0.5em 0.9em;
+    padding: 0.25em 0.9em;
 }
 
 .fc .fc-list-table .fc-list-event td.fc-list-event-time {
@@ -65,7 +65,7 @@
 
 .fc-direction-ltr .fc-list-day-text, 
 .fc-direction-rtl .fc-list-day-side-text {
-  color: var(--white);
+  color: var(--text-color);
 }
 
 /* All-Day style in list view */
@@ -75,6 +75,7 @@
 }
 
 .fc .fc-list-table .fc-list-event.allday .fc-list-event-title {
+  color: white;
   padding-left: 25px;
 }
 
