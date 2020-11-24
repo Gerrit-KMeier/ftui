@@ -14,6 +14,7 @@
 */
 
 import { FtuiElement } from '../element.component.js';
+import { FtuiCalendarData } from './calendar-data.component.js';
 import  { FullCalendar }  from '../../modules/fullcalendar/main.js';
 
 export class FtuiCalendar extends FtuiElement {
