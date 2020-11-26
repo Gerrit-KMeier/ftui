@@ -24,11 +24,21 @@
 </head>
 
 <body>
-  <ftui-grid base-width="600" base-height="600" resize="1">
+  <ftui-grid base-width="450" base-height="450" resize="1">
     <ftui-grid-tile row="1" col="1" height="1" width="1">
-      <header>Calendar</header>
+      <header>Calendar Week List</header>
 
-      <ftui-calendar view="listWeek" height="500px">
+      <ftui-calendar view="listWeek">
+        <ftui-calendar-data calendar="Calendar" color="primary"></ftui-calendar-data>
+        <ftui-calendar-data calendar="Abfall" color="brown"></ftui-calendar-data>
+      </ftui-calendar> 
+
+    </ftui-grid-tile>
+
+    <ftui-grid-tile row="1" col="2" height="1" width="1">
+      <header>Calendar Month Grid</header>
+
+      <ftui-calendar view="dayGridMonth">
         <ftui-calendar-data calendar="Calendar" color="primary"></ftui-calendar-data>
         <ftui-calendar-data calendar="Abfall" color="brown"></ftui-calendar-data>
       </ftui-calendar> 

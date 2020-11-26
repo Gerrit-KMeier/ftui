@@ -58,6 +58,10 @@ export class FtuiCalendarData extends FtuiElement {
     lines.forEach(line => {
       if (line.length > 0) {
         [id, start, end, title, location, description, category, duration] = line.split('|');
+
+        // const words = 'Lorem Ipsum Dolor Consectetur Adipiscing Elit'.split(' ');
+        // title = words[Math.floor(Math.random()*words.length)]; 
+
         let allDay = (start.trim().endsWith('00:00:00') && end.trim().endsWith('00:00:00'));
         data.push({ id, title, allDay, start, end, extendedProps: { location, description, category, duration } });
       }

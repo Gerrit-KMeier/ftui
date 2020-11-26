@@ -22,9 +22,13 @@ export class FtuiCalendar extends FtuiElement {
 
     super(Object.assign(FtuiCalendar.properties, properties));
 
+    this.windowWidth = 0;
+    this.initialized = false;
+
     this.configuration = {
       locale: 'de',
-      height: 'auto',
+      weekNumberCalculation: 'ISO',
+      height: '100%',
       initialView: 'listMonth',
       headerToolbar: {
         left: 'title',
@@ -43,7 +47,7 @@ export class FtuiCalendar extends FtuiElement {
         }
       },
       eventDidMount: arg => {
-        if (arg.event.allDay) {
+        if (arg.view.type.includes('list') && arg.event.allDay) {
           arg.el.classList.add('allday')
           const title = arg.el.querySelector('.fc-list-event-title');
           title.colSpan = 3;
@@ -66,6 +70,14 @@ export class FtuiCalendar extends FtuiElement {
 
     this.dataElements = this.querySelectorAll('ftui-calendar-data');
     this.dataElements.forEach(dataElement => dataElement.addEventListener('ftuiDataChanged', () => this.onDataChanged()));
+
+    window.addEventListener('resize', () => {
+      if (this.windowWidth !== window.innerWidth) {
+        clearTimeout(this.resizeTimerHandle);
+        this.resizeTimerHandle = setTimeout(() => this.updateSize(), 500);
+        this.windowWidth = window.innerWidth;
+      }
+    });
   }
 
   connectedCallback() {
@@ -77,15 +89,17 @@ export class FtuiCalendar extends FtuiElement {
     return `
       <style> @import "modules/fullcalendar/main.min.css"; </style>
       <style> @import "components/calendar/calendar.component.css"; </style>
-      <div id="calendar"></div>
+      <div id="calendar" class="list"></div>
       <slot></slot>`;
   }
 
   static get properties() {
     return {
       height: 'auto',
-      view: 'listWeek',
-      noHeader: false
+      view: 'listWeek', // listWeek, dayGridMonth
+      noHeader: false,
+      width: '',
+      height: ''
     };
   }
 
@@ -96,15 +110,27 @@ export class FtuiCalendar extends FtuiElement {
   onAttributeChanged(name) {
     switch (name) {
       case 'height':
-        this.calendar.setOption('height', this.height);
+        this.calendar.setOption('height', (this.height === 'auto') ? 'auto' : '100%');
         this.updateTitle(this.calendar, this.calendar.view.title);
+        this.style.height = this.height;
         break;
-      case 'view':
-        this.calendar.changeView(this.view);
+      case 'width':
+        this.style.width = this.width;
         break;
       case 'no-header':
         this.calendar.setOption('headerToolbar', (this.noHeader) ? false : this.configuration.headerToolbar);
+        this.updateTitle(this.calendar, this.calendar.view.title);
         break;
+        case 'view':
+          this.calendar.changeView(this.view);
+          if (this.view.includes('list')) {
+            this.calendarElement.classList.add('list');
+            this.calendarElement.classList.remove('grid');
+          } else {
+            this.calendarElement.classList.add('grid');
+            this.calendarElement.classList.remove('list');
+          }
+          break;
     }
   }
 
@@ -113,6 +139,15 @@ export class FtuiCalendar extends FtuiElement {
     this.dataElements.forEach(dataElement => {
       dataElement.fetch();
     });
+  }
+
+  initialLoadFinished() {
+    this.updateSize();
+    if (this.calendarElement.querySelector('.fc-view-harness').clientHeight == 0) {
+      this.calendar.setOption('height', 'auto'); // We're in a parent without fixed height, set to autosize based on content instead of container
+      this.updateTitle(this.calendar, this.calendar.view.title);
+    }
+    this.initialized = true;
   }
 
   onDataChanged() {
@@ -130,6 +165,31 @@ export class FtuiCalendar extends FtuiElement {
       this.sources.push(source);
       this.calendar.addEventSource(source);
     });
+
+    if (!this.initialized) {
+      this.initialLoadFinished();
+    }
+  }
+
+  updateSize() {
+    this.calendarElement.classList.remove("small-grid", "medium-grid", "large-grid");
+
+    if (this.view.toLowerCase().includes('grid')) {
+      if (this.calendarElement.clientWidth <= 500) {
+        this.calendarElement.classList.add('small-grid');
+        this.calendar.setOption('eventDisplay', 'list-item');
+        this.calendar.setOption('dayMaxEventRows', false);
+      } else if (this.calendarElement.clientWidth <= 700 || this.hideTime) {
+        this.calendarElement.classList.add('medium-grid');
+        this.calendar.setOption('eventDisplay', 'auto');
+        this.calendar.setOption('dayMaxEventRows', true);
+      } else {
+        this.calendarElement.classList.add('large-grid');
+        this.calendar.setOption('eventDisplay', 'auto');
+        this.calendar.setOption('dayMaxEventRows', true);
+      }
+    }
+    this.updateTitle(this.calendar, this.calendar.view.title);
   }
 
   updateTitle(calendar, text) {
