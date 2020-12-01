@@ -29,7 +29,7 @@
   --green1: #3caea3;
   --yellow1: #f6d55c;
   --red1: #ed553b;
-  --ligthblue: #6699FF;
+  --lightblue: #66aaFF;
   --royalblue: #394b98;
   --white: #ffffff;
   --black: #111111;
@@ -78,6 +78,12 @@
   --tab-contrast-color: var(--primary-contrast-color);
   --tab-active-color: var(--primary-color);
 
+  --popup-color: var(--text-color);
+  --popup-background-color: var(--grid-background-color);
+  --popup-overlay-color: rgba(0, 0, 0, 0.5);
+  --popup-header-color: var(--grid-header-color);
+  --popup-header-background-color: var(--grid-header-background-color);
+  
   --border-color: var(--gray75);
 
   --checkbox-off-color: var(--gray80);

@@ -146,7 +146,7 @@ class FhemService {
     this.states.refresh.request =
       this.sendCommand('jsonlist2 ' + this.config.refresh.filter)
         .then(res => res.json())
-        .catch(error => this.errorEvents.publish('<u>FHEM Command failed</u><br>' + error))
+        .catch(error => this.debugEvents.publish('<u>FHEM Command failed</u><br>' + error))
         .then(fhemJSON => this.parseRefreshResult(fhemJSON)
         );
   }
@@ -186,7 +186,7 @@ class FhemService {
       const err = 'request failed: Result is null';
       ftui.log(1, 'refresh: ' + err);
       this.states.refresh.result = err;
-      this.errorEvents.publish('<u>Refresh ' + err + ' </u><br>');
+      this.debugEvents.publish('<u>Refresh ' + err + ' </u><br>');
 
     }
     window.performance.mark('end read jsonlist2');
@@ -349,12 +349,13 @@ class FhemService {
       fwcsrf: this.config.csrf,
       XHR: '1'
     };
-    url.search = new URLSearchParams(params)
-    ftui.log(1, 'send to FHEM: ' + cmdline);
-    return fetch(url, {
+    const options = {
       username: this.config.username,
       password: this.config.password
-    });
+    };
+    url.search = new URLSearchParams(params)
+    ftui.log(1, 'send to FHEM: ' + cmdline);
+    return fetch(url, options);
   }
 
   onUpdateDone() {

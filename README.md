@@ -140,22 +140,31 @@ Example for output (HTML attribute -> function() -> FHEM reading):
 Components
 ------
 
+Layout
 - Tab
 - Grid
+- Circlemenu
+- Row
+- Column
+- Cell
+
+Elements
 - Label
 - Icon
 - [Button](#button)
 - Knob
 - Slider
 - Checkbox
-- Circlemenu
 - Weather
 - Dropdown
 - Colorpicker
 - [Image](#image)
 - [Badge](#badge)
-- [Speak](#speak)
+- Clock
 - [Chart](#chart)
+
+Miscellaneous
+- [Speak](#speak)
 
  ... to be continued
 
@@ -289,6 +298,18 @@ Example for DbLog
 
 [List of all icons](https://knowthelist.github.io/ftui/icons/demo.html)
 
+### Layout
+
+```html
+<ftui-row>
+    <ftui-column>
+      <ftui-cell>
+        <ftui-icon name="umbrella"></ftui-icon>
+        <ftui-label>Monday</ftui-label>
+      </ftui-cell>
+    </ftui-column>
+</ftui-row>
+```
 Examples
 ------
 
@@ -307,7 +328,7 @@ Examples
 - [Badge](https://knowthelist.github.io/ftui/examples/badge.html)
 - [Speak](https://knowthelist.github.io/ftui/examples/speak.html)
 - [Chart](https://knowthelist.github.io/ftui/examples/chart.html)
-
+- [Popup](https://knowthelist.github.io/ftui/examples/popup.html)
 
 Donation
 --------
