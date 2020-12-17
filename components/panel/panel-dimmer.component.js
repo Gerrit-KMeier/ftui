@@ -48,7 +48,7 @@ export class FtuiPanelDimmer extends FtuiElement {
     window.addEventListener("orientationchange", () => setTimeout(() => this.rangeable.update(), 100) , false);
 
     // Force re-render if visible 
-    document.addEventListener('tabVisiblityChanged', () => {
+    document.addEventListener('ftuiVisibilityChanged', () => {
       if (isVisible(this)) {
         this.rangeable.update();
       }
