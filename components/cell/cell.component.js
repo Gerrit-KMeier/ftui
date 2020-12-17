@@ -10,6 +10,7 @@
 */
 
 import { FtuiElement } from '../element.component.js';
+import { isNumeric, capitalize } from '../../modules/ftui/ftui.helper.js';
 
 export class FtuiCell extends FtuiElement {
 
@@ -36,8 +37,10 @@ export class FtuiCell extends FtuiElement {
     return {
       height: '',
       width: '',
+      alignItems: 'center',
       space: 'evenly',
       color: 'transparent',
+      margin: '0',
     };
   }
 
@@ -45,17 +48,29 @@ export class FtuiCell extends FtuiElement {
     return [...this.convertToAttributes(FtuiCell.properties), ...super.observedAttributes];
   }
 
-  onAttributeChanged(name, oldValue, newValue) {
+  onAttributeChanged(name, value) {
     switch (name) {
       case 'width':
-        this.style.width = newValue;
+        this.style.width = value;
         break;
       case 'height':
-        this.style.height = newValue;
+        this.style.height = value;
         break;
       case 'space':
-        this.style.justifyContent = 'space-' + newValue;
+        this.style.justifyContent = ('space-' + value);
         break;
+      case 'margin': {
+        this.style[`margin${capitalize(this.alignItems)}`] = isNumeric(value) ? value + 'em' : value;
+      }
+        break;
+      case 'align-items': {
+        const alignValue =
+          (value === 'left' || value === 'top')
+            ? 'flex-start'
+            : (value === 'right' || value === 'bottom')
+              ? 'flex-end' : value;
+        this.style.alignItems = alignValue;
+      }
     }
   }
 

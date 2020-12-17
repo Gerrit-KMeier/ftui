@@ -10,7 +10,11 @@ export default {
       'sonnig': './icons/sun.svg',
       'Sprühregen': './icons/rainy.svg',
       'Schneeregen': './icons/weather3.svg',
-      'unterschiedlich bewölkt, vereinzelt Schauer und Gewitter': './icons/sunny-sleet-storm.svg'
+      'unterschiedlich bewölkt, vereinzelt Schauer und Gewitter': './icons/sunny-sleet-storm.svg',
+      'Schneefall': './icons/snowy2.svg',
+      'Schneeschauer': './icons/snowy.svg',
+      'Gewitter': './icons/lightning1.svg',
+      'Nebel': './icons/lines.svg',
     },
     kleinklima: {
       'sonnig': './icons/weather/kleinklima/sunny.svg',
@@ -23,7 +27,7 @@ export default {
       'Gewitter': './icons/weather/kleinklima/thunderstorm.svg',
       'Schneeschauer': './icons/weather/kleinklima/chance_of_snow.svg',
       'Schneefall': './icons/weather/kleinklima/heavysnow.svg',
-      'Schneeregen': './icons/weather/rainsnow.svg/',
+      'Schneeregen': './icons/weather/kleinklima/rainsnow.svg',
       'Nebel': './icons/weather/kleinklima/haze.svg',
       'Sprühregen': './icons/weather/kleinklima/mist.svg',
       'unterschiedlich bewölkt, vereinzelt Schauer und Gewitter': './icons/weather/kleinklima/scatteredthunderstorms.svg',

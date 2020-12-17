@@ -70,10 +70,10 @@ class FtuiTab extends FtuiButton {
     this.active = true;
 
     // emit event
-    ftui.triggerEvent('ftuiVisiblityChanged');
+    ftui.triggerEvent('ftuiVisibilityChanged');
   }
 
-  onAttributeChanged(name, oldValue, newValue) {
+  onAttributeChanged(name, newValue, oldValue) {
     switch (name) {
       case 'value':
         if (newValue === 'on' && oldValue !== 'on' && this.value !== newValue) {

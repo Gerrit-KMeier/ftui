@@ -37,7 +37,7 @@ export class FtuiSlider extends FtuiElement {
 
 
     // force re-render if visible
-    document.addEventListener('ftuiVisiblityChanged', () => {
+    document.addEventListener('ftuiVisibilityChanged', () => {
       if (ftui.isVisible(this)) {
         this.rangeable.update();
       }
@@ -83,7 +83,7 @@ export class FtuiSlider extends FtuiElement {
     return [...this.convertToAttributes(FtuiSlider.properties), ...super.observedAttributes];
   }
 
-  onAttributeChanged(name, oldValue, newValue) {
+  onAttributeChanged(name, newValue, oldValue) {
     if (oldValue !== newValue) {
       this.updateRangable();
     }

@@ -8,6 +8,7 @@
 */
 
 import { FtuiElement } from '../element.component.js';
+import * as ftui from '../../modules/ftui/ftui.helper.js';
 
 export class FtuiPopup extends FtuiElement {
 
@@ -17,7 +18,7 @@ export class FtuiPopup extends FtuiElement {
     this.element = this.shadowRoot.querySelector('.overlay');
     this.window = this.shadowRoot.querySelector('.window');
     const header = this.querySelector('header');
-    header?.setAttribute('slot', 'header');
+    header && header.setAttribute('slot', 'header');
     document.addEventListener('click', event => this.onClickOutside(event));
     this.element.addEventListener('click', event => this.onClickInside(event));
 
@@ -30,7 +31,11 @@ export class FtuiPopup extends FtuiElement {
       <div class="overlay">
         <div class="window">
           <slot name="header"></slot>
-          <span class="close">&times;</span>
+          <span class="box-close">
+            <slot name="close">
+              <span class="close" popup-close>&times;</span>
+            </slot>
+          </span>
           <div class="content">
             <slot></slot>
           </div>
@@ -45,6 +50,7 @@ export class FtuiPopup extends FtuiElement {
       open: false,
       trigger: '',
       timeout: 10,
+      hidden: true,
     };
   }
 
@@ -65,10 +71,10 @@ export class FtuiPopup extends FtuiElement {
 
   onClickInside(event) {
     const target = event.target;
-    // Close window with 'close' or when the backdrop is clicked
+    console.log(target)
+    // Close window when the backdrop is clicked
     // or an element with popup-close attribute
-    if (target.classList.contains('close')
-      || target.classList.contains('overlay')
+    if (target.classList.contains('overlay')
       || target.hasAttribute('popup-close')) {
       this.setState(false);
       event.preventDefault();
@@ -76,8 +82,7 @@ export class FtuiPopup extends FtuiElement {
     this.startTimeout();
   }
 
-  onAttributeChanged(name, oldValue, newValue) {
-    console.log(name, oldValue, newValue) ;
+  onAttributeChanged(name, newValue) {
     switch (name) {
       case 'width':
       case 'height':
@@ -102,10 +107,11 @@ export class FtuiPopup extends FtuiElement {
 
   setState(value) {
     if (value) {
-      this.element.classList.add('open');
+      this.removeAttribute('hidden');
+      ftui.triggerEvent('ftuiVisibilityChanged');
       this.startTimeout();
     } else {
-      this.element.classList.remove('open');
+      this.setAttribute('hidden', '');
     }
   }
 
