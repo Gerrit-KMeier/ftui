@@ -81,7 +81,6 @@ export class FtuiCalendar extends FtuiElement {
   }
 
   connectedCallback() {
-    this.calendar.render();
     this.refresh();
   }
 
@@ -96,7 +95,8 @@ export class FtuiCalendar extends FtuiElement {
   static get properties() {
     return {
       height: 'auto',
-      view: 'listWeek', // listWeek, dayGridMonth
+      view: 'listWeek', // listWeek, listMonth, dayGridMonth
+      mode: 'auto', // auto, full, narrow (like full, but without showing the event start time), dots
       noHeader: false,
       width: '',
       height: ''
@@ -107,15 +107,30 @@ export class FtuiCalendar extends FtuiElement {
     return [...this.convertToAttributes(FtuiCalendar.properties), ...super.observedAttributes];
   }
 
+  get calculatedMode() {
+      if (this.mode === 'dots' || (this.mode === 'auto' && this.calendarElement.clientWidth <= 500)) {
+        return 'dots';
+      } else if (this.mode === 'narrow' || (this.mode === 'auto' && this.calendarElement.clientWidth <= 700)) {
+        return 'narrow';
+      } else {
+        return 'full';
+      }
+  }
+
   onAttributeChanged(name) {
     switch (name) {
       case 'height':
         this.calendar.setOption('height', (this.height === 'auto') ? 'auto' : '100%');
         this.updateTitle(this.calendar, this.calendar.view.title);
         this.style.height = this.height;
+        this.updateSize();
         break;
       case 'width':
         this.style.width = this.width;
+        this.updateSize();
+        break;
+      case 'mode':
+        this.updateSize();
         break;
       case 'no-header':
         this.calendar.setOption('headerToolbar', (this.noHeader) ? false : this.configuration.headerToolbar);
@@ -142,6 +157,7 @@ export class FtuiCalendar extends FtuiElement {
   }
 
   initialLoadFinished() {
+    this.calendar.render();
     this.updateSize();
     if (this.calendarElement.querySelector('.fc-view-harness').clientHeight == 0) {
       this.calendar.setOption('height', 'auto'); // We're in a parent without fixed height, set to autosize based on content instead of container
@@ -160,7 +176,7 @@ export class FtuiCalendar extends FtuiElement {
     this.dataElements.forEach(dataElement => {
       const source = {
         color: dataElement.dataColor,
-        events: dataElement.data
+        events: (this.currentMode === 'dots') ? dataElement.splittedData : dataElement.data
       };
       this.sources.push(source);
       this.calendar.addEventSource(source);
@@ -175,20 +191,31 @@ export class FtuiCalendar extends FtuiElement {
     this.calendarElement.classList.remove("small-grid", "medium-grid", "large-grid");
 
     if (this.view.toLowerCase().includes('grid')) {
-      if (this.calendarElement.clientWidth <= 500) {
-        this.calendarElement.classList.add('small-grid');
-        this.calendar.setOption('eventDisplay', 'list-item');
-        this.calendar.setOption('dayMaxEventRows', false);
-      } else if (this.calendarElement.clientWidth <= 700 || this.hideTime) {
-        this.calendarElement.classList.add('medium-grid');
-        this.calendar.setOption('eventDisplay', 'auto');
-        this.calendar.setOption('dayMaxEventRows', true);
-      } else {
-        this.calendarElement.classList.add('large-grid');
-        this.calendar.setOption('eventDisplay', 'auto');
-        this.calendar.setOption('dayMaxEventRows', true);
+      const mode = this.calculatedMode;
+      switch (mode) {
+        case 'dots':
+          this.calendarElement.classList.add('small-grid');
+          this.calendar.setOption('eventDisplay', 'list-item');
+          this.calendar.setOption('dayMaxEventRows', false);
+          break;
+        case 'narrow':
+          this.calendarElement.classList.add('medium-grid');
+          this.calendar.setOption('eventDisplay', 'auto');
+          this.calendar.setOption('dayMaxEventRows', true);
+          break;
+        case 'full':
+          this.calendarElement.classList.add('large-grid');
+          this.calendar.setOption('eventDisplay', 'auto');
+          this.calendar.setOption('dayMaxEventRows', true);
+          break;
+      }
+
+      if (mode !== this.currentMode) {
+        this.currentMode = mode;
+        this.onDataChanged(); // Rebuild events, 'full'&'narrow' need default behavior, 'dots' needs splitted multiday events
       }
     }
+
     this.updateTitle(this.calendar, this.calendar.view.title);
   }
 

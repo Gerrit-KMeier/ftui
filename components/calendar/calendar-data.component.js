@@ -35,6 +35,52 @@ export class FtuiCalendarData extends FtuiElement {
     return [...this.convertToAttributes(FtuiCalendarData.properties), ...super.observedAttributes];
   }
 
+  // Computed getter for seperated events for each day of an multiday-event, so we see enough dots in the dot-view
+  get splittedData() {
+    let events = [];
+
+    if (this.data) {
+      this.data.forEach(event => {
+        const eventStart = new Date(event.start);
+        const eventEnd = new Date(event.end);
+
+        if (!this.isSameDay(eventStart, eventEnd)) {
+          const startDay = new Date(eventStart.getTime()).setHours(0,0,0,0);
+          const endDay = new Date(eventEnd.getTime()).setHours(0,0,0,0);
+          const days = Math.round(endDay - startDay) / 86400000;
+          const format = 'YYYY-MM-DDThh:mm:ss'
+
+          let currentDayStart = new Date(startDay);
+          let nextDayStart = new Date(currentDayStart)
+          nextDayStart.setDate(nextDayStart.getDate() + 1);
+          for (let i = 0; i < days; i++) { 
+            let clone = {...event};
+            if (i == 0) {
+              clone.start = ftuiHelper.dateFormat(eventStart, format);
+              clone.end = ftuiHelper.dateFormat(nextDayStart, format);
+            } else if (i == days) {
+              clone.start = ftuiHelper.dateFormat(currentDayStart, format);
+              clone.end = ftuiHelper.dateFormat(eventEnd, format);
+            } else {
+              clone.start = ftuiHelper.dateFormat(currentDayStart, format);
+              clone.end = ftuiHelper.dateFormat(nextDayStart, format);
+            }
+            clone.id += '_' + i;
+            events.push(clone);
+
+            currentDayStart = nextDayStart;
+            nextDayStart = new Date(currentDayStart)
+            nextDayStart.setDate(currentDayStart.getDate() + 1);
+          }
+        } else {
+          events.push(event);
+        }
+      });
+    }
+
+    return events;
+  }
+
   fetch() {
     this.fetchEvents(this.calendar);
   }
@@ -59,6 +105,7 @@ export class FtuiCalendarData extends FtuiElement {
       if (line.length > 0) {
         [id, start, end, title, location, description, category, duration] = line.split('|');
 
+        // // Fake data for anonymized screenshots
         // const words = 'Lorem Ipsum Dolor Consectetur Adipiscing Elit'.split(' ');
         // title = words[Math.floor(Math.random()*words.length)]; 
 
@@ -79,6 +126,15 @@ export class FtuiCalendarData extends FtuiElement {
     if (ftuiHelper.isDefined(this.data)) {
       ftuiHelper.triggerEvent('ftuiDataChanged', this);
     }
+  }
+
+  isSameDay(date1, date2) {
+    date2.setSeconds(date2.getSeconds() -1); // Remove one seconds, so 00:00 enddates only count to the day before
+    return date1.getFullYear() === date2.getFullYear() 
+      &&
+      date1.getMonth() === date2.getMonth() 
+      &&
+      date1.getDate() === date2.getDate();
   }
 
 }
