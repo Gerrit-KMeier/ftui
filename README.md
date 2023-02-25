@@ -296,7 +296,7 @@ Example for DbLog
 
 ### Icon
 
-[List of all icons](https://knowthelist.github.io/ftui/icons/demo.html)
+[List of all icons](https://knowthelist.github.io/ftui/www/ftui/icons/demo.html)
 
 ### Layout
 
